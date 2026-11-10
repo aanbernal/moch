@@ -1,0 +1,65 @@
+{
+  "coverTable": {
+    "prologo": "first-date-flowers.jpg",
+    "expo-aws": "img-20260925-wa0032.jpg",
+    "ella-invita": "whatsapp-convo-her-asking-me-out.jpg",
+    "primera-cita": "first-date-flowers.jpg",
+    "segunda-cita": "img-20261004-wa0062.jpg",
+    "tercera-cita": "img-20261009-032021.jpg",
+    "gimnasio": "img-20261014-wa0097.jpg",
+    "kaax-cafe": "img-20261015-wa0086.jpg",
+    "en-su-casa": "mvimg-20261017-174928.jpg",
+    "cartas": "hoja1.jpeg",
+    "spooky-fest": "img-20261024-wa0033.jpg",
+    "clasico-calabazas": "img-20261025-135148.jpg",
+    "la-loma": "mvimg-20261026-173232.jpg",
+    "jsconf-gdl": "img-20261029-wa0106.jpg",
+    "un-mes": "img-20261101-wa0039.jpg",
+    "lienzo-boulevard": "img-20261105-wa0136.jpg",
+    "graduacion": "img-20261107-wa0085.jpg",
+    "continuara": null
+  },
+  "chapters": [
+    {
+      "slug": "prologo",
+      "order": 0,
+      "kind": "prologue",
+      "title": "Prólogo",
+      "note": "Nos conocimos en el equipo de la expo de AWS, en septiembre de 2026.",
+      "draft": true,
+      "cover": "first-date-flowers.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1001/first-date-flowers.jpg",
+          "alt": "Flores de la primera cita",
+          "maxWidth": 800
+        }
+      ]
+    },
+    {
+      "slug": "expo-aws",
+      "order": 10,
+      "kind": "chapter",
+      "title": "Expo AWS",
+      "dateText": "25 al 28 de septiembre, 2026",
+      "note": "Ensayamos como equipo del 25 al 28 de septiembre. El 28 fue la expo.",
+      "draft": true,
+      "cover": "img-20260925-wa0032.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/0925_Ensayo_expo_aws/IMG-20260925-WA0032.jpg",
+          "planPath": "0925/IMG-20260925-WA0032",
+          "alt": "Angel durante el ensayo de la expo"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/0925_Ensayo_expo_aws/IMG-20260925-WA0041.jpg",
+          "planPath": "0925/IMG-20260925-WA0041",
+          "alt": "Karla en el escenario"
+        }
+      ]
+    }
+  ]
+}

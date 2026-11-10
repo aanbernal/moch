@@ -1,0 +1,93 @@
+---
+permalink: /sw.js
+eleventyExcludeFromCollections: true
+---
+// Offline service worker, generated at build time. Do not edit dist/sw.js.
+const BUILD_ID = {{ buildInfo.buildId | dump | safe }};
+const PAGES = {{ buildInfo.pages | dump | safe }};
+const SHELL_CACHE = "shell-" + BUILD_ID;
+const MEDIA_CACHE = "media-v1";
+const NETWORK_TIMEOUT_MS = 4000;
+
+{{ buildInfo.swLogic | safe }}
+
+self.addEventListener("install", (event) => {
+  // Best effort: never block installation on a failed fetch.
+  event.waitUntil(
+    caches.open(SHELL_CACHE).then((cache) => cache.addAll(["/", "/indice/"])).catch(() => {}).then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const names = await caches.keys();
+      await Promise.all(names.filter((n) => n.startsWith("shell-") && n !== SHELL_CACHE).map((n) => caches.delete(n)));
+      await pruneMedia();
+      await self.clients.claim();
+    })()
+  );
+});
+
+// Remove cached /m/ entries that the current build no longer references.
+async function pruneMedia() {
+  try {
+    const res = await fetch("/build-manifest.json", { cache: "no-store" });
+    if (!res.ok) return;
+    const keep = new Set((await res.json()).media);
+    const cache = await caches.open(MEDIA_CACHE);
+    for (const req of await cache.keys()) {
+      if (!keep.has(new URL(req.url).pathname)) await cache.delete(req);
+    }
+  } catch (e) {
+    // Offline or malformed manifest: keep everything.
+  }
+}
+
+async function cacheFirst(request) {
+  const cache = await caches.open(MEDIA_CACHE);
+  const hit = await cache.match(request);
+  if (hit) return hit;
+  const res = await fetch(request);
+  if (res.ok && res.status === 200) cache.put(request, res.clone()).catch(() => {});
+  return res;
+}
+
+async function networkFirst(request) {
+  const cache = await caches.open(SHELL_CACHE);
+  const net = fetch(request).then((res) => {
+    if (res.ok) cache.put(request, res.clone()).catch(() => {});
+    return res;
+  });
+  net.catch(() => {});
+  try {
+    return await Promise.race([
+      net,
+      new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), NETWORK_TIMEOUT_MS)),
+    ]);
+  } catch (e) {
+    const hit = await cache.match(request);
+    if (hit) return hit;
+    return net;
+  }
+}
+
+async function cacheAllPages() {
+  try {
+    const cache = await caches.open(SHELL_CACHE);
+    await Promise.all(PAGES.map((p) => cache.add(p).catch(() => {})));
+  } catch (e) {
+    // ignored
+  }
+}
+
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
+  // Range requests (video seeking) go straight to the network.
+  if (request.headers.has("range")) return;
+  const url = new URL(request.url);
+  const ctx = { method: request.method, origin: url.origin, pathname: url.pathname };
+  if (!shouldHandle(ctx, { selfOrigin: self.location.origin, pages: PAGES })) return;
+  if (url.pathname === "/indice/") event.waitUntil(cacheAllPages());
+  event.respondWith(url.pathname.startsWith("/m/") ? cacheFirst(request) : networkFirst(request));
+});

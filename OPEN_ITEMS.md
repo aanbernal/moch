@@ -1,0 +1,63 @@
+# Pendientes del álbum
+
+Archivo generado por `npm run open-items`. No lo edites a mano y no se publica en el sitio.
+
+## Riesgo de privacidad aceptado
+
+- El álbum no usa autenticación: la privacidad se apoya en `noindex` y en una dirección imposible de adivinar. Quien tenga el enlace puede verlo. Este riesgo está aceptado.
+
+## Pendientes del plan (sección 6)
+
+- 29 sep: pie de foto de la captura de pantalla donde ella te invita a salir.
+- 4 oct: las palabras exactas del momento de tomarse de la mano.
+- 8 oct: confirmar qué videos usar (WA0028 y 031413); excluir cualquiera que venga de la app excluida.
+- 14 oct: nombre del gimnasio.
+- 15 oct: la selfie borrosa se conserva por defecto; confirmar o quitar.
+- 17 oct: comida y café; los videos WA0056, WA0057, WA0058, WA0059 y WA0065 no se usan, confirmar que siguen fuera.
+- 23 oct: IMG-20261023-WA0106 se omite; nota sobre el alcohol; quién tomó las fotos.
+- 25 oct: el video corto del taller no va; WA0142 se omite; lugar de los elotes.
+- 26 oct: nombre de la convocatoria y la nota de "fall deeper".
+- 29 y 30 oct: charlas, mejor momento y lugar de la selfie en el espejo.
+- 7 nov: lugar de las selfies de noche.
+- 1 nov: la historia de la primera vez que se vieron se omite; confirmar.
+- Título definitivo del álbum (hoy es el provisional de `content/site.json`).
+- El scrapbook es un proyecto aparte y no forma parte de este álbum.
+
+## Nombres que no coinciden entre el plan y el disco
+
+- `hidden_files/` en el plan vs `album-for-kiro/` en disco.
+- `0925` en el plan vs la carpeta `0925_Ensayo_expo_aws`.
+- `IMG-20261009-032021` en el plan vs `IMG_20261009_032021.jpg` en disco.
+- "Foto del carro 201839" en el plan vs `IMG_20261025_201839.jpg` en disco.
+- El nombre del archivo del collage del 8 oct contiene el nombre de la app excluida; el archivo no se usa y la protección lo bloquea.
+- `Para Manuel .pdf` tiene un espacio antes de la extensión; se publica como `para-manuel.pdf`.
+
+## Valores por defecto que debes confirmar
+
+- Los capítulos sembrados tienen texto neutral y están marcados como provisionales; reescríbelos con tus palabras.
+- Los datos de `repo` en `content/site.json` siguen con `REPLACE_`; hay que completarlos antes de usar el administrador.
+- Portada de `jsconf-gdl`: confirmar que `IMG-20261029-WA0106.jpg` no es una foto grupal; si lo es, la portada pasa a `MVIMG_20261030_160325.jpg`. _(obsoleto: el capítulo "jsconf-gdl" ya no existe)_
+
+## Discrepancias de nombres
+
+- IMG-20260925-WA0032.jpg: el plan dice "0925/IMG-20260925-WA0032" y en disco es "new-drive/0925_Ensayo_expo_aws/IMG-20260925-WA0032.jpg"
+- IMG-20260925-WA0041.jpg: el plan dice "0925/IMG-20260925-WA0041" y en disco es "new-drive/0925_Ensayo_expo_aws/IMG-20260925-WA0041.jpg"
+
+## Elementos sin pie de foto
+
+- prologo: 1 sin pie de foto (first-date-flowers.jpg)
+- expo-aws: 2 sin pie de foto (img-20260925-wa0032.jpg, img-20260925-wa0041.jpg)
+
+## Capítulos con texto provisional
+
+- prologo: texto provisional, reescríbelo con tus palabras
+- expo-aws: texto provisional, reescríbelo con tus palabras
+
+## Capítulos sin lugar
+
+- prologo
+- expo-aws
+
+## Capítulos sin fecha
+
+- prologo

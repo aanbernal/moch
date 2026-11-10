@@ -1,0 +1,17 @@
+---
+permalink: /manifest.webmanifest
+eleventyExcludeFromCollections: true
+---
+{
+  "name": {{ site.title | dump | safe }},
+  "short_name": {{ site.title | dump | safe }},
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": {{ (site.themeColor or "#f4ead7") | dump | safe }},
+  "theme_color": {{ (site.themeColor or "#f4ead7") | dump | safe }},
+  "icons": [
+    { "src": "/assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

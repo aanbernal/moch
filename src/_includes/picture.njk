@@ -1,0 +1,30 @@
+{#- Shared image macros. `p` is the result of picset.pick(entry, maxWidth); callers pass it in
+    because imported macros do not see the page context. Alt is always non-empty (callers add fallbacks). -#}
+
+{% macro picture(p, alt, sizes, eager, cls) -%}
+{%- if p -%}
+<picture{% if cls %} class="{{ cls }}"{% endif %}>
+{%- if p.webpSet %}<source type="image/webp" srcset="{{ p.webpSet }}" sizes="{{ sizes }}">{% endif -%}
+<img src="{{ p.fallback.url }}" srcset="{{ p.jpgSet }}" sizes="{{ sizes }}" width="{{ p.fallback.width }}" height="{{ p.fallback.height }}" alt="{{ alt }}" {% if eager %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+</picture>
+{%- endif -%}
+{%- endmacro %}
+
+{#- Letter: figure.frame-letter (frame lives on the figure, never on the image). The link goes to the
+    full image, so it works without JS; book.js turns it into a button that opens the dialog. -#}
+{% macro letter(p, alt, sizes, eager, id, caption) -%}
+{%- if p -%}
+<figure class="frame-letter">
+  <a class="zoom-open" href="{{ p.full.url }}" data-zoom="{{ id }}" aria-haspopup="dialog">
+    {{ picture(p, alt, sizes, eager) }}
+  </a>
+  {%- if caption %}
+  <figcaption>{{ caption }}</figcaption>
+  {%- endif %}
+</figure>
+<dialog class="zoom" id="{{ id }}" aria-label="{{ alt }}">
+  <form method="dialog"><button class="zoom-close" aria-label="Cerrar">Cerrar</button></form>
+  <img src="{{ p.full.url }}" width="{{ p.full.width }}" height="{{ p.full.height }}" alt="{{ alt }}" loading="lazy" decoding="async">
+</dialog>
+{%- endif -%}
+{%- endmacro %}

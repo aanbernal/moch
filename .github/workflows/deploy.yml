@@ -1,0 +1,57 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+env:
+  # Must equal PIPELINE_VERSION in lib/paths.mjs (checked by test/deploy-workflow.test.mjs).
+  PIPELINE_VERSION: "1"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install ffmpeg and poppler
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg poppler-utils
+
+      - name: Restore media cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/media
+          key: media-${{ runner.os }}-${{ env.PIPELINE_VERSION }}-${{ hashFiles('content/**') }}
+          restore-keys: |
+            media-${{ runner.os }}-${{ env.PIPELINE_VERSION }}-
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload OPEN_ITEMS
+        uses: actions/upload-artifact@v4
+        with:
+          name: OPEN_ITEMS
+          path: OPEN_ITEMS.md
+          retention-days: 30
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ vars.CF_PROJECT }} --branch=main

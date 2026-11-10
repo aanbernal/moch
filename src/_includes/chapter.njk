@@ -1,0 +1,103 @@
+{#- One chapter page. Expects `ch` (from capitulo.njk pagination), `site`, `media`, `picset`.
+    Every optional element and its wrapper sits behind {% if %}; nothing renders for absent data. -#}
+{%- from "picture.njk" import picture, letter -%}
+{%- set ofChapter = "del prólogo" if ch.kind == "prologue" else ("del capítulo " + ch.number if ch.number else "del capítulo") -%}
+{%- set items = ch.media or [] -%}
+{%- set firstImg = picset.firstImage(items) -%}
+{%- set isTeaser = ch.kind == "teaser" -%}
+<main class="chapter chapter-{{ ch.kind }}" id="main">
+  <article class="page">
+    <header class="chapter-head">
+      {%- if ch.kind == "chapter" %}
+      <p class="eyebrow">{{ site.volume }} · Capítulo {{ ch.number }}</p>
+      {%- elif ch.kind == "prologue" %}
+      <p class="eyebrow">Prólogo</p>
+      {%- endif %}
+      <h1>{{ ch.title }}</h1>
+      {%- if ch.dateText and not isTeaser %}
+      <p class="date">{{ ch.dateText }}</p>
+      {%- endif %}
+      {%- if ch.place and not isTeaser %}
+      <p class="place">{{ ch.place }}</p>
+      {%- endif %}
+    </header>
+    {%- if ch.note and not isTeaser %}
+    <div class="note"><p>{{ ch.note }}</p></div>
+    {%- endif %}
+    {%- if not isTeaser %}
+    {%- for item in items %}
+    {%- set nxt = items[loop.index] %}
+    {%- set pairHead = item.type == "photo" and not item.pairWithPrevious and nxt and nxt.type == "photo" and nxt.pairWithPrevious %}
+    {%- set inPair = pairHead or (item.type == "photo" and item.pairWithPrevious) %}
+    {%- set eager = loop.index0 == firstImg %}
+    {%- if item.type == "quote" and ch.slug == "graduacion" and loop.last and item.when == "6 de noviembre" %}
+    {#- closing page: handled after the article #}
+    {%- elif item.type == "quote" %}
+    <blockquote class="quote">
+      <p>{{ item.text }}</p>
+      {%- if item.when %}
+      <footer>{{ item.when }}</footer>
+      {%- endif %}
+    </blockquote>
+    {%- elif item.type == "photo" %}
+    {%- set entry = media[ch.slug + "/" + item.file] %}
+    {%- if entry %}
+    {%- set alt = item.alt or ("Foto " + ofChapter) %}
+    {%- if pairHead %}
+    <div class="pair">
+    {%- endif %}
+    {%- if item.frame == "letter" %}
+    {{ letter(picset.pick(entry, item.maxWidth), alt, "(min-width: 700px) 620px, 100vw", eager, "zoom-" + ch.slug + "-" + loop.index, item.caption) }}
+    {%- else %}
+    {%- set sizes = "(min-width: 700px) 310px, 50vw" if inPair else ("60vw" if item.size == "small" else "(min-width: 700px) 620px, 100vw") %}
+    <figure class="photo{% if item.size == "small" %} size-small{% endif %}">
+      {{ picture(picset.pick(entry, item.maxWidth), alt, sizes, eager) }}
+      {%- if item.caption %}
+      <figcaption>{{ item.caption }}</figcaption>
+      {%- endif %}
+    </figure>
+    {%- endif %}
+    {%- if item.pairWithPrevious and inPair %}
+    </div>
+    {%- endif %}
+    {%- endif %}
+    {%- elif item.type == "video" %}
+    {%- set entry = media[ch.slug + "/" + item.file] %}
+    {%- if entry and entry.url %}
+    {%- set vp = picset.pick(entry, 800) %}
+    <figure class="video">
+      <video controls playsinline preload="none"{% if vp %} poster="{{ vp.fallback.url }}"{% endif %} width="{{ entry.width }}" height="{{ entry.height }}" aria-label="{{ item.alt or ("Video " + ofChapter) }}">
+        <source src="{{ entry.url }}" type="video/mp4">
+      </video>
+      {%- if item.caption %}
+      <figcaption>{{ item.caption }}</figcaption>
+      {%- endif %}
+    </figure>
+    {%- endif %}
+    {%- elif item.type == "pdf" %}
+    {%- set entry = media[ch.slug + "/" + item.file] %}
+    {%- if entry and entry.pages %}
+    {%- set itemIdx = loop.index %}
+    {%- for pg in entry.pages %}
+    {{ letter(picset.pick(pg, 0), pg.alt or item.alt or ("Foto " + ofChapter), "(min-width: 700px) 620px, 100vw", (eager and loop.first), "zoom-" + ch.slug + "-" + itemIdx + "-" + loop.index, item.caption if loop.last else null) }}
+    {%- endfor %}
+    {%- endif %}
+    {%- endif %}
+    {%- endfor %}
+    {%- endif %}
+  </article>
+  {%- set lastItem = items | last %}
+  {%- if lastItem and ch.slug == "graduacion" and lastItem.type == "quote" and lastItem.when == "6 de noviembre" %}
+  <section class="closing-page" aria-label="Cierre">
+    <blockquote class="quote">
+      <p>{{ lastItem.text }}</p>
+      <footer>{{ lastItem.when }}</footer>
+    </blockquote>
+  </section>
+  {%- endif %}
+  <nav class="pager" aria-label="Navegación entre páginas">
+    <a class="prev" rel="prev" href="{{ ch.prevUrl }}">Anterior</a>
+    <a class="toc" href="/indice/">Índice</a>
+    <a class="next" rel="next" href="{{ ch.nextUrl }}">Siguiente</a>
+  </nav>
+</main>

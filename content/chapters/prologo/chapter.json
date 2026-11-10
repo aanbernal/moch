@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "order": 0,
+  "kind": "prologue",
+  "title": "Prólogo",
+  "note": "Nos conocimos en el equipo de la expo de AWS, en septiembre de 2026.",
+  "draft": true,
+  "cover": "first-date-flowers.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "first-date-flowers.jpg",
+      "alt": "Flores de la primera cita",
+      "maxWidth": 800
+    }
+  ]
+}

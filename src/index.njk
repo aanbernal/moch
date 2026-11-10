@@ -1,0 +1,22 @@
+---
+layout: base.njk
+permalink: /index.html
+pageTitle: Portada
+bodyClass: cover
+eleventyExcludeFromCollections: true
+---
+{%- from "picture.njk" import picture -%}
+{%- set prologue = null -%}
+{%- for ch in chapters -%}{%- if ch.kind == "prologue" and not prologue -%}{%- set prologue = ch -%}{%- endif -%}{%- endfor -%}
+{%- set hero = media[prologue.slug + "/" + prologue.cover] if (prologue and prologue.cover) else null -%}
+{%- set heroPick = picset.pick(hero, 800) if hero else null -%}
+<main class="cover-page">
+{%- if heroPick %}
+  {{ picture(heroPick, prologue.title or "Portada del álbum", "(min-width: 700px) 620px, 100vw", true, "cover-hero") }}
+{%- endif %}
+  <h1>{{ site.title }}</h1>
+  {%- if site.subtitle %}
+  <p class="subtitle">{{ site.subtitle }}</p>
+  {%- endif %}
+  <a class="button open" href="/indice/">Abrir</a>
+</main>

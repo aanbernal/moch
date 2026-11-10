@@ -1,0 +1,5 @@
+---
+permalink: /build.json
+eleventyExcludeFromCollections: true
+---
+{{ { sha: buildInfo.sha, builtAt: buildInfo.builtAt } | dump | safe }}

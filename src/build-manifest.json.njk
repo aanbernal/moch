@@ -1,0 +1,5 @@
+---
+permalink: /build-manifest.json
+eleventyExcludeFromCollections: true
+---
+{{ { buildId: buildInfo.buildId, media: buildInfo.media, pages: buildInfo.pages } | dump(2) | safe }}

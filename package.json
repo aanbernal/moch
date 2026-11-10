@@ -15,7 +15,7 @@
     "seed": "node scripts/seed.mjs",
     "preview": "node scripts/serve.mjs",
     "dev": "node scripts/media.mjs && eleventy --serve",
-    "test": "node --test test/",
+    "test": "node --test \"test/*.test.js\" \"test/*.test.mjs\"",
     "verify": "node scripts/verify-dist.mjs",
     "verify:browser": "STRICT_SEED=1 node scripts/verify-browser.mjs",
     "e2e": "STRICT_SEED=1 node scripts/e2e-admin.mjs"

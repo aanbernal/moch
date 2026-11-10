@@ -1,0 +1,12 @@
+{
+  "title": "Nuestra historia",
+  "subtitle": "Volumen I",
+  "volume": "Volumen I",
+  "lang": "es",
+  "themeColor": "#f4ead7",
+  "repo": {
+    "owner": "REPLACE_WITH_ANGELS_GITHUB_USER",
+    "name": "REPLACE_WITH_REPO",
+    "branch": "main"
+  }
+}

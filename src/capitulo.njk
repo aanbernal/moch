@@ -1,0 +1,13 @@
+---
+layout: base.njk
+pagination:
+  data: chapters
+  size: 1
+  alias: ch
+permalink: "/capitulo/{{ ch.slug }}/"
+bodyClass: chapter-page
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  pageTitle: "{{ ch.title | safe }}"
+---
+{% include "chapter.njk" %}

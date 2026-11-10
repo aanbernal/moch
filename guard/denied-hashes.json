@@ -1,0 +1,14 @@
+[
+  {
+    "label": "excluded-1",
+    "sha256": "4e3be75a6fa07bba171ff5c9e08c2f565e68f17b54efc3c4381a295ffa89c19c"
+  },
+  {
+    "label": "excluded-2",
+    "sha256": "1af5d3b74371c1683ebb7ab2a6b7c0fdc6ea747f91ba8d3e69278f5c79cf7164"
+  },
+  {
+    "label": "excluded-3",
+    "sha256": "fb65345905886d61a8072a905679bba8be298280f989768da0a525160aa9304b"
+  }
+]
