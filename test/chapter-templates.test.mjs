@@ -194,7 +194,7 @@ test("prologue hero emits only variants up to maxWidth", async () => {
   assert.match(await section("capitulo-prologo"), /alt="Foto del prólogo"/);
 });
 
-test("video renders inline autoplay video with Sonido button and no mp4 link", async () => {
+test("video renders inline autoplay video with previous-style controls and no mp4 link", async () => {
   const dos = await section("capitulo-dos");
   const tag = dos.match(/<video[^>]*>/)[0];
   for (const a of ["muted", "autoplay", "loop", "playsinline"]) assert.match(tag, new RegExp(`\\b${a}\\b`));
@@ -203,8 +203,9 @@ test("video renders inline autoplay video with Sonido button and no mp4 link", a
   assert.match(tag, /poster="\/m\/[0-9a-f]{12}-\d+\.jpg"/);
   assert.doesNotMatch(tag, /controls/);
   assert.match(dos, /<source src="\/m\/[0-9a-f]{12}\.mp4" type="video\/mp4">/);
-  assert.match(dos, /<button type="button" class="vbtn v-sound" aria-label="Sonido" aria-pressed="false" data-no-swipe>/);
-  assert.match(dos, />Sonido<\/span>/);
+  assert.match(dos, /<button type="button" class="vbtn v-pause" aria-label="Pausar video" data-no-swipe>/);
+  assert.match(dos, /<button type="button" class="vbtn v-sound" aria-label="Activar sonido" aria-pressed="false" data-no-swipe>/);
+  assert.match(dos, /<button type="button" class="vbtn v-badge" aria-label="Reproducir video" data-no-swipe hidden>/);
   assert.doesNotMatch(dos, /<a [^>]*href="[^"]*\.mp4"/);
   assert.equal(((await html()).match(/<video/g) || []).length, 1);
 });

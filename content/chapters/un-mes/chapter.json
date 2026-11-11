@@ -4,23 +4,27 @@
   "kind": "chapter",
   "title": "Un mes",
   "dateText": "1 de noviembre, 2026",
-  "note": "Un mes desde la primera cita.",
-  "draft": true,
+  "note": "El 1 de noviembre le mandé flores por nuestro primer mes desde la primera cita, para empezar bien el mes. La extrañaba después de Guadalajara.",
+  "draft": false,
   "cover": "img-20261101-wa0039.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261101-wa0039.jpg",
-      "alt": "Ramo de flores con una tarjeta"
+      "alt": "Ramo de flores con tarjeta de Feliz inicio de Mes",
+      "caption": "El ramo, con la tarjeta: 'Feliz inicio de Mes'."
     },
     {
       "type": "photo",
       "file": "img-20261101-wa0041.jpg",
-      "alt": "Selfie en el espejo con el ramo"
+      "alt": "Selfie en el espejo con el ramo",
+      "caption": "Ella, en el espejo, con el ramo."
     },
     {
       "type": "video",
-      "file": "vid-20261101-wa0040.mp4"
+      "file": "vid-20261101-wa0040.mp4",
+      "caption": "Ella, sonriendo con el ramo.",
+      "alt": "Video de Karla sonriendo con el ramo"
     },
     {
       "type": "quote",

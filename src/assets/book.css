@@ -99,30 +99,65 @@ html.js .book[data-pages="1"] .page.is-active {
   left: 0; right: 0;
 }
 
-/* Flip animation */
+/* Flip animation (visible page turn) */
 .book.flip-next .page.is-active,
 .book.flip-next .page.is-left,
-.book.flip-next .page.is-right { animation: pageInNext 0.45s ease; }
+.book.flip-next .page.is-right { animation: pageInNext 0.55s ease; }
 .book.flip-prev .page.is-active,
 .book.flip-prev .page.is-left,
-.book.flip-prev .page.is-right { animation: pageInPrev 0.45s ease; }
+.book.flip-prev .page.is-right { animation: pageInPrev 0.55s ease; }
 @keyframes pageInNext {
-  from { opacity: 0.2; transform: translateX(18px) rotateY(-6deg); }
-  to { opacity: 1; transform: translateX(0) rotateY(0); }
+  from { opacity: 0; transform: translateX(18px) scale(0.995); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
 }
 @keyframes pageInPrev {
-  from { opacity: 0.2; transform: translateX(-18px) rotateY(6deg); }
-  to { opacity: 1; transform: translateX(0) rotateY(0); }
+  from { opacity: 0; transform: translateX(-18px) scale(0.995); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
 }
+
+/* 3D flipper sheet overlay (kept hidden to avoid double/ghost page during switch) */
+.flipper { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .book.flip-next .page.is-active,
   .book.flip-prev .page.is-active,
   .book.flip-next .page.is-left, .book.flip-next .page.is-right,
   .book.flip-prev .page.is-left, .book.flip-prev .page.is-right { animation: none; }
+  .flipper.run-next .flip-leaf, .flipper.run-prev .flip-leaf { animation: none; }
 }
 
-/* Flipper (decorative/placeholder for now) */
-.flipper { display: none; }
+/* Top-level bar */
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: var(--bar-h);
+  width: min(760px, 100%);
+  padding: 6px 10px;
+  z-index: 20;
+  flex-wrap: wrap;
+}
+.bar .nav {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(244, 234, 215, 0.12);
+  color: #f7f0df;
+  border-radius: 999px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 16px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+.bar .nav:hover { background: rgba(244,234,215,0.22); }
+.page-indicator {
+  color: rgba(247,240,223,0.85);
+  font-family: var(--sans);
+  font-size: 12px;
+  padding: 4px 8px;
+}
 
 /* Top-level bar */
 .bar {
@@ -230,6 +265,9 @@ figure { margin: 0; }
 .photo .media-box, .video .media-box { flex: 1; min-height: 0; width: 100%; }
 .photo img, .photo picture { max-height: 100%; width: auto; max-width: 100%; object-fit: contain; margin: 0 auto; border-radius: 4px; }
 figcaption { font-family: var(--sans); font-size: 13px; color: var(--muted); text-align: center; }
+/* Improve readability when captions/text sit near imagery */
+.page[data-kind="item"] figcaption,
+.page[data-kind="title-media"] figcaption { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.75); background: rgba(0,0,0,0.18); padding: 4px 8px; border-radius: 6px; }
 
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; height: 100%; align-items: center; }
 .pair .photo { height: 100%; }
@@ -242,8 +280,8 @@ figcaption { font-family: var(--sans); font-size: 13px; color: var(--muted); tex
 .v-sound { right: 8px; }
 .v-badge { left: 50%; top: 50%; bottom: auto; transform: translate(-50%,-50%); font-size: 18px; }
 .vbtn { z-index: 2; }
-.v-sound { left: auto; right: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 6px; }
-.vbtn-text { font-size: 12px; line-height: 1; }
+.v-pause { left: 8px; bottom: 8px; }
+.v-sound { left: auto; right: 8px; bottom: 8px; }
 .v-badge { left: 50%; top: 50%; bottom: auto; transform: translate(-50%,-50%); font-size: 18px; }
 
 /* Letter frames */
@@ -257,8 +295,10 @@ figcaption { font-family: var(--sans); font-size: 13px; color: var(--muted); tex
 .quote footer { font-family: var(--sans); font-size: 13px; color: var(--muted); }
 .teaser-title { font-size: clamp(2rem, 5vw, 3rem); font-style: italic; }
 
-/* Blank page: just paper */
+/* Blank/filler page: keeps spreads paired */
 .page[data-kind="blank"] { background: var(--paper); }
+.blank-filler { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+.blank-phrase { margin: 0; max-width: 18ch; font-family: var(--serif); font-size: clamp(1.1rem, 2.2vw, 1.6rem); line-height: 1.4; color: var(--muted); font-style: italic; }
 
 /* Zoom dialog */
 .zoom { border: none; padding: 0; background: rgba(20,16,12,0.92); color: #fff; width: 100vw; max-width: 100vw; height: 100vh; max-height: 100vh; }

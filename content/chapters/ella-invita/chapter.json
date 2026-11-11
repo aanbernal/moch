@@ -4,14 +4,15 @@
   "kind": "chapter",
   "title": "Ella invita",
   "dateText": "29 de septiembre, 2026",
-  "note": "Ella me invitó a salir.",
+  "note": "Después de la expo, en la cena del equipo, ella me escribió. Me invitó a salir. Yo le dije que como ella ponía el transporte, yo invitaba el plan. Quedamos el jueves a las 6 en Lienzo.",
   "draft": true,
   "cover": "whatsapp-convo-her-asking-me-out.jpg",
   "media": [
     {
       "type": "photo",
       "file": "whatsapp-convo-her-asking-me-out.jpg",
-      "alt": "Captura de la conversación en la que ella me invita a salir"
+      "alt": "Captura del chat en el que Karla me invita a salir",
+      "caption": "[PENDIENTE — Angel: una línea para esta captura]"
     },
     {
       "type": "quote",
@@ -21,12 +22,14 @@
     {
       "type": "photo",
       "file": "img-20260929-wa0085.jpg",
-      "alt": "Foto del 29 de septiembre"
+      "alt": "Selfie en la cena del equipo después de la expo",
+      "caption": "La cena del equipo, después de la expo."
     },
     {
       "type": "photo",
       "file": "img-20260929-wa0087.jpg",
-      "alt": "Foto del 29 de septiembre, segunda"
+      "alt": "Foto grupal del equipo de AWS en la calle",
+      "caption": "El equipo completo, esa noche."
     },
     {
       "type": "quote",

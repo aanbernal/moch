@@ -5,30 +5,34 @@
   "title": "Kaax Café",
   "dateText": "15 de octubre, 2026",
   "place": "Kaax Café",
-  "note": "Fuimos a Kaax Café el 15 de octubre.",
-  "draft": true,
+  "note": "Cita de estudio en Kaax Café, el 15 de octubre. Intenté ayudarle a instalar Mongo y me falló en mi Linux. Fue divertido igual. Las dos fotos van en la misma página: una de cada uno.",
+  "draft": false,
   "cover": "img-20261015-wa0086.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261015-wa0086.jpg",
-      "alt": "Foto en Kaax Café"
+      "alt": "Angel en Kaax Café, sonriendo",
+      "caption": "Yo, en la mesa de afuera de Kaax."
     },
     {
       "type": "photo",
       "file": "mvimg-20261015-145404.jpg",
-      "alt": "Foto en Kaax Café, segunda",
-      "pairWithPrevious": true
+      "alt": "Karla en Kaax Café, sonriendo",
+      "pairWithPrevious": true,
+      "caption": "Ella, en la misma mesa."
     },
     {
       "type": "photo",
       "file": "img-20261015-155423.jpg",
-      "alt": "Foto en Kaax Café, tercera"
+      "alt": "Retrato de Karla en Kaax, con papel picado",
+      "caption": "Ella sola, con el papel picado arriba."
     },
     {
       "type": "photo",
       "file": "img-20261015-wa0122.jpg",
-      "alt": "Foto en Kaax Café, cuarta"
+      "alt": "Selfie borrosa adentro de Kaax",
+      "caption": "La selfie borrosa. La dejamos, nos da risa."
     }
   ]
 }

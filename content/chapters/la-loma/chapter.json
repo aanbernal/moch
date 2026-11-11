@@ -5,23 +5,27 @@
   "title": "La Loma",
   "dateText": "26 de octubre, 2026",
   "place": "Parque La Loma",
-  "note": "Fui a ayudarla a grabar el video de su convocatoria en el Parque La Loma.",
+  "note": "El 26 de octubre fui a ayudarla a grabar el video de su convocatoria en Parque La Loma. No fue una cita romántica — fue ayudarla. [PENDIENTE — Angel: la nota de escucharla enumerar sus logros, en tus palabras]",
   "draft": true,
   "cover": "mvimg-20261026-173232.jpg",
   "media": [
     {
       "type": "photo",
       "file": "mvimg-20261026-173232.jpg",
-      "alt": "Foto en el Parque La Loma"
+      "alt": "Karla sobre un tronco en La Loma",
+      "caption": "Ella, sobre el tronco."
     },
     {
       "type": "photo",
       "file": "mvimg-20261026-183502.jpg",
-      "alt": "Foto en el pasto al anochecer"
+      "alt": "Foto en el pasto al anochecer",
+      "caption": "En el pasto, ya de noche."
     },
     {
       "type": "video",
-      "file": "vid-20261026-wa0165.mp4"
+      "file": "vid-20261026-wa0165.mp4",
+      "caption": "Una selfie de 2 segundos, los dos.",
+      "alt": "Video selfie de 2 segundos"
     }
   ]
 }

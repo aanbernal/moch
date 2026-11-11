@@ -4,7 +4,7 @@
   "kind": "chapter",
   "title": "Cartas",
   "dateText": "Noche del 17 de octubre, 2026",
-  "draft": true,
+  "draft": false,
   "cover": "hoja1.jpeg",
   "media": [
     {
@@ -29,5 +29,6 @@
       "alt": "Carta de Karla, hoja {n}",
       "frame": "letter"
     }
-  ]
+  ],
+  "note": "Esa noche, el 17 de octubre, cada uno le escribió una carta al otro. Estas son las originales, tal como las escribimos."
 }

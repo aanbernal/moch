@@ -4,27 +4,33 @@
   "kind": "chapter",
   "title": "En su casa",
   "dateText": "17 de octubre, 2026",
-  "note": "Estuvimos en su casa el 17 de octubre.",
-  "draft": true,
+  "note": "El 17 de octubre, en su casa. Comimos juntos, hicimos café — el mejor que he probado —, jugamos Mario Party y pintamos los disfraces para la fiesta. Los disfraces son de *10 Things I Hate About You*, y nos pintamos el uno al otro. Después, el primer beso, en video.",
+  "draft": false,
   "cover": "mvimg-20261017-174928.jpg",
   "media": [
     {
       "type": "photo",
       "file": "mvimg-20261017-174928.jpg",
-      "alt": "Foto en su casa"
+      "alt": "Karla en su sala, con el suéter de Angel",
+      "caption": "Ella, con mi suéter. Se veía hermosa."
     },
     {
       "type": "photo",
       "file": "img-20261017-174956.jpg",
-      "alt": "Foto en su casa, segunda"
+      "alt": "Foto de los dos, felices en su casa",
+      "caption": "Los dos, felices, sin más."
     },
     {
       "type": "video",
-      "file": "1017-painting-costumes-short.mp4"
+      "file": "1017-painting-costumes-short.mp4",
+      "caption": "Pintándonos los disfraces, con los goggles.",
+      "alt": "Video pintando los disfraces"
     },
     {
       "type": "video",
-      "file": "1017-first-kiss-short.mp4"
+      "file": "1017-first-kiss-short.mp4",
+      "caption": "El primer beso, después de pintar.",
+      "alt": "Video del primer beso, de noche y con los disfraces"
     }
   ]
 }

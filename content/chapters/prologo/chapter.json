@@ -3,15 +3,16 @@
   "order": 0,
   "kind": "prologue",
   "title": "Prólogo",
-  "note": "Nos conocimos en el equipo de la expo de AWS, en septiembre de 2026.",
-  "draft": true,
+  "note": "Nos conocimos en el equipo de la expo de AWS, en septiembre de 2026. Yo no sabía que ese ensayo iba a cambiarme el año.",
+  "draft": false,
   "cover": "first-date-flowers.jpg",
   "media": [
     {
       "type": "photo",
       "file": "first-date-flowers.jpg",
-      "alt": "Flores de la primera cita",
-      "maxWidth": 800
+      "alt": "Flores en un florero, con un listón rosa",
+      "maxWidth": 800,
+      "caption": "Las flores de nuestra primera cita."
     }
   ]
 }

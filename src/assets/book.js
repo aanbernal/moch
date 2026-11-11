@@ -29,6 +29,7 @@ import {
     const barPrev = document.querySelector(".bar .nav.prev");
     const barNext = document.querySelector(".bar .nav.next");
     const barToc = document.querySelector(".bar .nav.toc");
+    const flipper = book.querySelector(".flipper");
     const announce = document.getElementById("anuncio");
     const zoomDialog = document.querySelector("dialog.zoom");
     const zoomStage = zoomDialog ? zoomDialog.querySelector(".zoom-stage") : null;
@@ -79,15 +80,25 @@ import {
     function updateVideoUi(box) {
       const video = box.querySelector("video");
       if (!video) return;
+      const pauseBtn = box.querySelector(".v-pause");
       const soundBtn = box.querySelector(".v-sound");
       const badge = box.querySelector(".v-badge");
       const paused = video.paused || video.ended;
+      if (pauseBtn) pauseBtn.setAttribute("aria-label", paused ? "Reproducir video" : "Pausar video");
       if (badge) badge.hidden = !paused;
       if (soundBtn) {
         const on = !video.muted;
         soundBtn.setAttribute("aria-pressed", on ? "true" : "false");
-        soundBtn.setAttribute("aria-label", on ? "Silenciar" : "Sonido");
+        soundBtn.setAttribute("aria-label", on ? "Silenciar video" : "Activar sonido");
       }
+    }
+
+    function tryPlay(video) {
+      if (!video) return;
+      try {
+        const pr = video.play();
+        if (pr && typeof pr.catch === "function") pr.catch(() => {});
+      } catch {}
     }
 
     function syncVideos() {
@@ -102,9 +113,10 @@ import {
               // entering: start from beginning, muted autoplay
               try { video.currentTime = 0; } catch {}
               video.muted = true;
+              video.autoplay = true;
             }
-            const pr = video.play();
-            if (pr && typeof pr.catch === "function") pr.catch(() => {});
+            tryPlay(video);
+            setTimeout(() => { if (!document.hidden && displayedIds().includes(p.id)) tryPlay(video); }, 120);
           } else {
             try { video.pause(); } catch {}
           }
@@ -115,6 +127,23 @@ import {
       lastDisplayed.clear();
       for (const id of displayed) lastDisplayed.add(id);
     }
+
+    // Try to (re)start videos when they become ready while displayed
+    ["loadeddata", "canplay"].forEach((ev) => {
+      document.addEventListener(ev, (e) => {
+        const v = e.target;
+        if (!v || v.tagName !== "VIDEO") return;
+        const pageEl = v.closest("section.page");
+        if (!pageEl) return;
+        const displayed = new Set(displayedIds());
+        if (displayed.has(pageEl.id) && !document.hidden) {
+          const pr = v.play();
+          if (pr && typeof pr.catch === "function") pr.catch(() => {});
+          const box = v.closest(".video-box");
+          if (box) updateVideoUi(box);
+        }
+      }, true);
+    });
 
     function render(opts = {}) {
       mode = modeFromViewport(window.innerWidth, window.innerHeight);
@@ -128,12 +157,8 @@ import {
         p.el.classList.remove("is-left", "is-right", "spread-single");
       }
 
-      let ids = displayedIds();
+      const ids = displayedIds();
       if (mode === 2) {
-        // Avoid showing structural blank padding pages: show the content page alone instead.
-        const filtered = ids.filter((id) => (byId.get(id)?.kind || "") !== "blank");
-        if (filtered.length === 1) ids = filtered;
-        else if (filtered.length === 0) ids = [ids[0]].filter(Boolean);
         book.dataset.pages = ids.length === 1 ? "1" : "2";
         if (ids.length === 1) {
           const p = byId.get(ids[0]);
@@ -168,20 +193,22 @@ import {
       syncVideos();
     }
 
+    function playFlip(dir) {
+      book.classList.remove("flip-next", "flip-prev", "is-flipping");
+      void book.offsetWidth;
+      book.classList.add(dir === 1 ? "flip-next" : "flip-prev", "is-flipping");
+      window.clearTimeout(playFlip._t);
+      playFlip._t = window.setTimeout(() => {
+        book.classList.remove("flip-next", "flip-prev", "is-flipping");
+      }, 450);
+    }
+
     function goToCursor(next, opts = {}) {
       const max = total();
       if (next == null || next < 0 || next >= max) return;
       const prev = cursor;
       cursor = next;
-      // simple flip animation class
-      if (opts.animate !== false) {
-        const dir = next > prev ? "flip-next" : "flip-prev";
-        book.classList.remove("flip-next", "flip-prev");
-        // force reflow
-        void book.offsetWidth;
-        book.classList.add(dir);
-        window.setTimeout(() => book.classList.remove("flip-next", "flip-prev"), 500);
-      }
+      if (opts.animate !== false) playFlip(next > prev ? 1 : -1);
       render(opts);
     }
 
@@ -289,9 +316,10 @@ import {
       });
     }
 
-    // Video controls: tap video toggles play/pause, Sonido toggles sound. No navigation/open.
+    // Video controls: tap video toggles play/pause, sound button toggles sound. No navigation/open.
     document.addEventListener("click", (e) => {
       if (e.target.closest("a[href$='.mp4']")) { e.preventDefault(); e.stopPropagation(); }
+      const pauseBtn = e.target.closest(".v-pause");
       const soundBtn = e.target.closest(".v-sound");
       const badge = e.target.closest(".v-badge");
       const box = e.target.closest(".video-box");
@@ -301,12 +329,19 @@ import {
       if (soundBtn) {
         e.preventDefault(); e.stopPropagation();
         video.muted = !video.muted;
-        if (!video.muted) { video.play().catch(() => {}); }
+        if (!video.muted) video.play().catch(() => {});
         updateVideoUi(box);
         return;
       }
-      // tap on video/badge/box toggles play/pause only
-      if (badge || e.target.closest("video") || e.target === box) {
+      if (pauseBtn || badge) {
+        e.preventDefault(); e.stopPropagation();
+        if (video.paused || video.ended) video.play().catch(() => {});
+        else video.pause();
+        updateVideoUi(box);
+        return;
+      }
+      // tap on video itself toggles play/pause
+      if (e.target.closest("video")) {
         e.preventDefault(); e.stopPropagation();
         if (video.paused || video.ended) video.play().catch(() => {});
         else video.pause();

@@ -4,34 +4,34 @@
   "kind": "chapter",
   "title": "La segunda cita",
   "dateText": "Dom 4 de octubre, 2026",
-  "note": "Nuestra segunda cita fue el domingo 4 de octubre.",
+  "note": "Nuestra segunda cita: Coraline en el cine a las 4:10, y después pizza en Piazza Vera. Ella me tomó de la mano en el cine y yo temblé. De regreso, ella manejaba y yo iba de copiloto.",
   "draft": true,
   "cover": "img-20261004-wa0062.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261004-wa0062.jpg",
-      "alt": "Foto de la segunda cita"
+      "alt": "Selfie de los dos en Piazza Vera, sonriendo",
+      "caption": "Nosotros en Vera, con las luces de fondo. Mi favorita."
     },
     {
       "type": "photo",
       "file": "img-20261004-wa0065.jpg",
-      "alt": "Foto de la segunda cita, segunda"
+      "alt": "Angel en el carro de noche, con lluvia en la ventana",
+      "caption": "De regreso, ella manejando. Yo, de passenger princess."
     },
     {
       "type": "photo",
       "file": "img-20261004-wa0066.jpg",
-      "alt": "Foto de la segunda cita, tercera"
+      "alt": "Pizza a la mitad y café en Piazza Vera",
+      "caption": "Nuestra pizza, ya empezada, y el café."
     },
     {
       "type": "photo",
       "file": "img-20261004-wa0068.jpg",
-      "alt": "Foto de la segunda cita, cuarta"
-    },
-    {
-      "type": "quote",
-      "text": "Me da gusto haberme animado a mandarte mensaje",
-      "when": "2 de octubre"
+      "alt": "Tablero del carro de noche, de regreso a casa",
+      "caption": "El camino a casa, de noche."
     }
-  ]
+  ],
+  "place": "Coraline (4:10 pm, Forum) + Piazza Vera Pizza & Cafe"
 }

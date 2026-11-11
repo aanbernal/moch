@@ -4,19 +4,21 @@
   "kind": "chapter",
   "title": "Expo AWS",
   "dateText": "25 al 28 de septiembre, 2026",
-  "note": "Ensayamos como equipo del 25 al 28 de septiembre. El 28 fue la expo.",
-  "draft": true,
+  "note": "Ensayamos como equipo del 25 al 28 de septiembre. El 28 fue la expo. Yo la veía en el escenario, con esa energía con la que se expresa, y me quedé hipnotizado — aunque creo que no se me notó nada.",
+  "draft": false,
   "cover": "img-20260925-wa0032.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20260925-wa0032.jpg",
-      "alt": "Angel durante el ensayo de la expo"
+      "alt": "Angel ensayando con su laptop",
+      "caption": "Yo, ensayando con el equipo."
     },
     {
       "type": "photo",
       "file": "img-20260925-wa0041.jpg",
-      "alt": "Karla en el escenario"
+      "alt": "Karla en el escenario, con micrófono",
+      "caption": "Ella en el escenario. Así la vi yo."
     }
   ]
 }

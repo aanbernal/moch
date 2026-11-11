@@ -26,7 +26,8 @@
               <video muted autoplay loop playsinline preload="metadata" width="{{ entry.width }}" height="{{ entry.height }}"{% if vp %} poster="{{ vp.fallback.url }}"{% endif %} aria-label="{{ it.alt or ("Video " + ofChapter) }}">
                 <source src="{{ entry.url }}" type="video/mp4">
               </video>
-              <button type="button" class="vbtn v-sound" aria-label="Sonido" aria-pressed="false" data-no-swipe><span aria-hidden="true">🔈</span><span class="vbtn-text">Sonido</span></button>
+              <button type="button" class="vbtn v-pause" aria-label="Pausar video" data-no-swipe><span aria-hidden="true">❚❚</span></button>
+              <button type="button" class="vbtn v-sound" aria-label="Activar sonido" aria-pressed="false" data-no-swipe><span aria-hidden="true">♪</span></button>
               <button type="button" class="vbtn v-badge" aria-label="Reproducir video" data-no-swipe hidden><span aria-hidden="true">▶</span></button>
             </div>
           </div>

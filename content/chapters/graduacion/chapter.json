@@ -4,34 +4,39 @@
   "kind": "chapter",
   "title": "Fotos de graduación",
   "dateText": "7 de noviembre, 2026",
-  "note": "Karla me acompañó a mis fotos de graduación.",
+  "note": "El 7 de noviembre ella me acompañó a mis fotos de graduación.",
   "draft": true,
   "cover": "img-20261107-wa0085.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261107-wa0085.jpg",
-      "alt": "Foto de graduación"
+      "alt": "Beso en la mejilla en el pasto",
+      "caption": "Ella, dándome un beso en la mejilla."
     },
     {
       "type": "photo",
       "file": "img-20261107-wa0117.jpg",
-      "alt": "Foto de graduación, segunda"
+      "alt": "Tomados de la mano en la pérgola",
+      "caption": "De la mano, en la pérgola."
     },
     {
       "type": "photo",
       "file": "img-20261107-wa0125.jpg",
-      "alt": "Foto de graduación, tercera"
+      "alt": "Foto de cuerpo completo en la pérgola",
+      "caption": "Los dos, de cuerpo completo, en la pérgola."
     },
     {
       "type": "photo",
       "file": "img-20261107-202653.jpg",
-      "alt": "Selfie de noche"
+      "alt": "Selfie de noche",
+      "caption": "Selfies de noche. [PENDIENTE: lugar]"
     },
     {
       "type": "photo",
       "file": "img-20261107-202709.jpg",
-      "alt": "Selfie de noche, segunda"
+      "alt": "Selfie de noche, segunda",
+      "caption": "Selfies de noche. [PENDIENTE: lugar]"
     },
     {
       "type": "quote",

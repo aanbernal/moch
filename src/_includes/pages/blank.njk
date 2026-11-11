@@ -1,1 +1,13 @@
-{#- Blank paper: decorative, no content. -#}
+{#- Decorative filler page (used to keep spreads paired, no empty page). -#}
+{%- set fillers = [
+  "Cada página es un pedacito de nosotros.",
+  "Contigo, lo sencillo se vuelve recuerdo.",
+  "Aquí caben todas las risas que nos faltan.",
+  "Nuestro lugar favorito: donde estemos tú y yo.",
+  "Pequeños momentos, gran historia.",
+  "Y lo mejor todavía se está escribiendo."
+] -%}
+{%- set i = (page.id | length + (page.theme | length if page.theme else 0)) % (fillers | length) -%}
+        <div class="blank-filler">
+          <p class="blank-phrase">{{ fillers[i] }}</p>
+        </div>

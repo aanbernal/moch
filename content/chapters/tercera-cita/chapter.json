@@ -4,24 +4,27 @@
   "kind": "chapter",
   "title": "La tercera cita",
   "dateText": "Jue 8 de octubre, 2026",
-  "note": "Nuestra tercera cita fue el jueves 8 de octubre.",
-  "draft": true,
+  "note": "Cita de estudio en Lienzo, después de su congreso en Querétaro (6–7 de octubre, de chips). Le dejé flores en su casa para felicitarla por su expo: tulipanes naranjas e hortensias blancas. El repartidor le escribió y se arruinó la sorpresa, así que le pedí que su mamá la grabara. Alrededor de las 8 pm.",
+  "draft": false,
   "cover": "img-20261009-032021.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261009-032021.jpg",
-      "alt": "Foto de la tercera cita"
+      "alt": "Selfie en Lienzo Café, ella con aretes de estrella",
+      "caption": "Nosotros en Lienzo, estudiando."
     },
     {
       "type": "photo",
       "file": "img-20261008-wa0060.jpg",
-      "alt": "Foto de la tercera cita, segunda"
+      "alt": "Karla en su casa con tulipanes naranjas e hortensias blancas",
+      "caption": "Ella, en su casa, con las flores que le dejé."
     },
     {
       "type": "photo",
       "file": "img-20261008-222901.jpg",
-      "alt": "Foto de la tercera cita, tercera"
+      "alt": "Primer plano del ramo en su cuarto",
+      "caption": "El ramo, de cerca."
     }
   ]
 }

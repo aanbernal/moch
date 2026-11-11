@@ -4,38 +4,45 @@
   "kind": "chapter",
   "title": "Clásico y calabazas",
   "dateText": "25 de octubre, 2026",
-  "note": "Vimos el Clásico en su casa, ambos con la camiseta del Barça, y por la tarde hicimos un florero de calabaza en Bohemio Café y Arte.",
-  "draft": true,
+  "note": "El 25 de octubre vimos el Clásico en su casa, los dos con la camiseta del Barça. El Barcelona perdió 1–2. Su hermana y su novio hicieron hot dogs, y estuvimos con café y sus snacks. Por la tarde, taller de flores de calabaza en Bohemio Café y Arte, con Flowerly — cada uno hizo su florero con cempasúchil. Después, elotes.",
+  "draft": false,
   "cover": "img-20261025-135148.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261025-135148.jpg",
-      "alt": "Selfie con la camiseta del Barça"
+      "alt": "Selfie con la camiseta del Barça",
+      "caption": "Los dos, con la camiseta del Barça."
     },
     {
       "type": "photo",
       "file": "mvimg-20261025-134359.jpg",
-      "alt": "Karla con la camiseta del Barça"
+      "alt": "Karla con la camiseta del Barça",
+      "caption": "Ella, con su camiseta."
     },
     {
       "type": "photo",
       "file": "img-20261025-wa0146.jpg",
-      "alt": "Los dos con floreros de calabaza"
+      "alt": "Los dos con floreros de calabaza",
+      "caption": "Los dos, con nuestros floreros de calabaza."
     },
     {
       "type": "photo",
       "file": "img-20261025-wa0115.jpg",
-      "alt": "Karla en el taller de calabazas"
+      "alt": "Karla sola en el taller de calabazas",
+      "caption": "Ella, sola, en el taller."
     },
     {
       "type": "photo",
       "file": "img-20261025-wa0126.jpg",
-      "alt": "Dos calabazas sobre la mesa"
+      "alt": "Dos calabazas con flores sobre la mesa",
+      "caption": "Nuestras dos calabazas, en la mesa."
     },
     {
       "type": "video",
-      "file": "1025-karla-arranging-flowers-short.mp4"
+      "file": "1025-karla-arranging-flowers-short.mp4",
+      "caption": "Ella, concentrada, arreglando las flores.",
+      "alt": "Video corto de Karla arreglando flores"
     },
     {
       "type": "quote",
@@ -45,7 +52,8 @@
     {
       "type": "photo",
       "file": "img-20261025-201839.jpg",
-      "alt": "Foto en el camino de regreso"
+      "alt": "Karla riendo en el carro, de regreso",
+      "caption": "De regreso a casa, a las 8:18 pm."
     }
   ]
 }

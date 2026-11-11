@@ -5,24 +5,27 @@
   "title": "Spooky Fest",
   "dateText": "23 de octubre, 2026",
   "place": "Casino Los Naranjos",
-  "note": "Fuimos al Spooky Fest en Casino Los Naranjos y conocí a sus amigas y amigos.",
+  "note": "Spooky Fest en Casino Los Naranjos, el 23 de octubre. Conocí a sus amigas. Llevábamos los disfraces pintados.",
   "draft": true,
   "cover": "img-20261024-wa0033.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261024-wa0033.jpg",
-      "alt": "Selfie en el espejo en el Spooky Fest"
+      "alt": "Selfie en el espejo en el Spooky Fest",
+      "caption": "Nosotros, en el espejo, con los disfraces."
     },
     {
       "type": "photo",
       "file": "img-20261024-wa0046.jpg",
-      "alt": "Foto de cerca con luces al aire libre"
+      "alt": "Foto de cerca con luces al aire libre",
+      "caption": "Ella, de cerca, con las luces de fuera."
     },
     {
       "type": "photo",
       "file": "img-20261024-wa0041.jpg",
-      "alt": "Foto de cuerpo completo en el Spooky Fest"
+      "alt": "Foto de cuerpo completo en el Spooky Fest",
+      "caption": "Los dos, de cuerpo completo."
     }
   ]
 }

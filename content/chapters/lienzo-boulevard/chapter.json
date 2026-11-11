@@ -5,19 +5,21 @@
   "title": "Lienzo Boulevard",
   "dateText": "5 de noviembre, 2026",
   "place": "Lienzo Boulevard",
-  "note": "Cita de estudio en Lienzo Boulevard, mientras ella trabajaba en su cartel.",
-  "draft": true,
+  "note": "Cita de estudio en Lienzo Boulevard, el 5 de noviembre. Yo la veía trabajar en su cartel para el congreso STEM.",
+  "draft": false,
   "cover": "img-20261105-wa0136.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261105-wa0136.jpg",
-      "alt": "Foto en Lienzo Boulevard"
+      "alt": "Selfie sonriendo en Lienzo Boulevard",
+      "caption": "Ella, sonriendo, trabajando en su cartel."
     },
     {
       "type": "photo",
       "file": "img-20261105-wa0138.jpg",
-      "alt": "Foto en Lienzo Boulevard, segunda"
+      "alt": "Selfie con ojos muy abiertos en Lienzo Boulevard",
+      "caption": "Ella, con cara de tonta, a propósito."
     }
   ]
 }

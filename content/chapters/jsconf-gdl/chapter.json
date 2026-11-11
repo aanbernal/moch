@@ -5,34 +5,39 @@
   "title": "JSConf GDL",
   "dateText": "29 y 30 de octubre, 2026",
   "place": "Guadalajara",
-  "note": "Fuimos juntos a JSConf en Guadalajara, con amigos.",
+  "note": "JSConf en Guadalajara, el 29 y 30 de octubre, con amigos. Ella se volvió fan de Capital One por el swag, de broma. De regreso, en el camión, se quedó dormida en mi hombro.",
   "draft": true,
   "cover": "img-20261029-wa0106.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261029-wa0106.jpg",
-      "alt": "Bolsas amarillas de JSConf"
+      "alt": "Bolsas amarillas de JSConf",
+      "caption": "Nuestras bolsas amarillas de JSConf."
     },
     {
       "type": "photo",
       "file": "mvimg-20261030-160325.jpg",
-      "alt": "Karla con artículos de Capital One"
+      "alt": "Karla con artículos de Capital One",
+      "caption": "Ella, fan de Capital One, con el swag."
     },
     {
       "type": "photo",
       "file": "mvimg-20261030-160354.jpg",
-      "alt": "Karla con artículos de Capital One, segunda"
+      "alt": "Karla con artículos de Capital One",
+      "caption": "Ella, fan de Capital One, con el swag."
     },
     {
       "type": "photo",
       "file": "img-20261030-wa0019.jpg",
-      "alt": "Selfie en el espejo"
+      "alt": "Selfie en el espejo en Guadalajara",
+      "caption": "Selfie en el espejo. [PENDIENTE: lugar]"
     },
     {
       "type": "photo",
       "file": "img-20261030-wa0104.jpg",
-      "alt": "En el camión de regreso"
+      "alt": "Karla dormida en el hombro de Angel, en el camión",
+      "caption": "En el camión a casa, dormida en mi hombro."
     }
   ]
 }

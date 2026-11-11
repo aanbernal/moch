@@ -5,14 +5,15 @@
   "title": "La primera cita",
   "dateText": "Jue 1 de octubre, 2026",
   "place": "Lienzo Café, Tepic",
-  "note": "Nuestra primera cita fue en Lienzo Café, en Tepic.",
-  "draft": true,
+  "note": "Nuestra primera cita fue en Lienzo Café. Yo estaba nervioso. Ella me recogió y manejó. Después me mandó la foto de las flores en su escritorio, y yo supe que la había pasado bien.",
+  "draft": false,
   "cover": "first-date-flowers.jpg",
   "media": [
     {
       "type": "photo",
       "file": "first-date-flowers.jpg",
-      "alt": "Flores de la primera cita"
+      "alt": "Flores en un florero con listón rosa, sobre un escritorio",
+      "caption": "Las flores, ya en su escritorio, junto a sus libros."
     },
     {
       "type": "quote",
@@ -22,12 +23,18 @@
     {
       "type": "photo",
       "file": "img-20261024-134512.jpg",
-      "alt": "Foto de la primera cita"
+      "alt": "Karla en el carro de noche, sonriendo con el ramo",
+      "caption": "Ella, en el carro esa noche, con el mismo ramo."
     },
     {
       "type": "quote",
       "text": "Me agradó el date",
       "when": "1 de octubre"
+    },
+    {
+      "type": "quote",
+      "text": "Me da gusto haberme animado a mandarte mensaje",
+      "when": "2 de octubre"
     }
   ]
 }

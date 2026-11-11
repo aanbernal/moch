@@ -4,26 +4,33 @@
   "kind": "chapter",
   "title": "Cita en el gimnasio",
   "dateText": "14 de octubre, 2026",
-  "note": "Fuimos juntos al gimnasio el 14 de octubre.",
+  "note": "Fuimos juntos al gimnasio el 14 de octubre. A mí me encanta el gym, y me encanta que ella me acompañe. La selfie del carro es de ANTES del gym; el video oscuro es DESPUÉS, en un parque cercano.",
   "draft": true,
   "cover": "img-20261014-wa0097.jpg",
   "media": [
     {
       "type": "photo",
       "file": "img-20261014-wa0097.jpg",
-      "alt": "Foto de la cita en el gimnasio"
+      "alt": "Selfie en el carro antes del gimnasio, los dos riendo",
+      "caption": "En el carro, antes del gym, riéndonos."
     },
     {
       "type": "video",
-      "file": "1014-karla-gym-short.mp4"
+      "file": "1014-karla-gym-short.mp4",
+      "caption": "Ella, en la máquina, riéndose.",
+      "alt": "Video corto de Karla en el gimnasio"
     },
     {
       "type": "video",
-      "file": "1014-angel-gym-short.mp4"
+      "file": "1014-angel-gym-short.mp4",
+      "caption": "Yo, en la misma máquina.",
+      "alt": "Video corto de Angel en el gimnasio"
     },
     {
       "type": "video",
-      "file": "vid-20261014-wa0098.mp4"
+      "file": "vid-20261014-wa0098.mp4",
+      "caption": "Después del gym, en el parque.",
+      "alt": "Video selfie oscuro después del gimnasio"
     }
   ]
 }
