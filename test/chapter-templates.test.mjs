@@ -13,7 +13,12 @@ import { runMedia } from "../scripts/media.mjs";
 // media pipeline and Eleventy, entirely under os.tmpdir().
 
 let tmp, out;
-const html = (p) => fs.readFile(path.join(out, p, "index.html"), "utf8");
+const html = (p = "") => fs.readFile(path.join(out, p, "index.html"), "utf8");
+const section = async (id) => {
+  const m = (await html()).match(new RegExp(`<section class="page" id="${id}"[\\s\\S]*?</section>`));
+  assert.ok(m, `section ${id}`);
+  return m[0];
+};
 
 function makePdf(n) {
   const objs = ["<< /Type /Catalog /Pages 2 0 R >>"];
@@ -73,7 +78,7 @@ before(async () => {
   await w("dos", { order: 20, kind: "chapter", title: "Dos", cover: "clip.mp4",
     media: [
       { type: "video", file: "clip.mp4" },
-      { type: "pdf", file: "carta.pdf", alt: "Carta, hoja {n}", frame: "letter" },
+      { type: "pdf", file: "carta.pdf", alt: "Carta, hoja {n}", frame: "letter", pages: [1, 2] },
     ] });
   await w("fin", { order: 30, kind: "teaser", title: "Continuará…", media: [] });
   await fs.writeFile(path.join(content, "site.json"), JSON.stringify({ title: "Álbum de prueba", volume: "Volumen I", lang: "es" }));
@@ -85,82 +90,174 @@ before(async () => {
 
 after(() => fs.rm(tmp, { recursive: true, force: true }));
 
-test("nav labels are fixed; ends go to the TOC", async () => {
-  const uno = await html("capitulo/uno");
-  assert.match(uno, /<a class="prev" rel="prev" href="\/capitulo\/prologo\/">Anterior<\/a>/);
-  assert.match(uno, /<a class="next" rel="next" href="\/capitulo\/dos\/">Siguiente<\/a>/);
-  assert.match(uno, />Índice<\/a>/);
-  assert.doesNotMatch(uno.split('<nav class="pager"')[1], /Dos|Prólogo del álbum/);
-  assert.match(await html("capitulo/prologo"), /rel="prev" href="\/indice\/">Anterior/);
-  assert.match(await html("capitulo/fin"), /rel="next" href="\/indice\/">Siguiente/);
+test("the Book is one document with one section per Page, inert except the Cover", async () => {
+  const doc = await html();
+  assert.match(doc, /^<!doctype html>\s*<html lang="es" class="no-js">/i);
+  assert.match(doc, /<div class="stage">\s*<main id="book" class="book" data-pages="1">\s*<div class="pages">/);
+  const ids = [...doc.matchAll(/<section class="page" id="([^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(ids, [
+    "portada", "indice", "relleno-1",
+    "capitulo-prologo", "capitulo-prologo-2",
+    "capitulo-uno", "capitulo-uno-2", "capitulo-uno-3", "capitulo-uno-4",
+    "capitulo-dos", "capitulo-dos-2", "capitulo-dos-3", "capitulo-dos-4",
+    "capitulo-fin", "relleno-2",
+  ]);
+  const tags = [...doc.matchAll(/<section class="page" id="([^"]+)"[^>]*>/g)].map((m) => m[0]);
+  for (const t of tags) {
+    if (t.includes('id="portada"')) assert.doesNotMatch(t, /inert|aria-hidden/);
+    else assert.match(t, / inert aria-hidden="true">$/);
+  }
+  assert.match(tags[0], /data-kind="cover" data-label="Portada"/);
+  assert.match(doc, /<section class="page" id="capitulo-uno-2" data-kind="title-text" data-label="Capítulo 1, Uno &lt;b&gt;, página 2"/);
+  assert.equal((doc.match(/<dialog class="zoom"/g) || []).length, 1);
+  assert.match(doc, /<p id="anuncio" class="sr-only" aria-live="polite"><\/p>/);
+  assert.match(doc, /<noscript>[\s\S]*Activa JavaScript para pasar las páginas[\s\S]*<\/noscript>/);
+  assert.doesNotMatch(doc, /<script (?!type="module" src="\/assets\/book\.js")/);
+  assert.match(doc, /<link rel="stylesheet" href="\/assets\/themes\.css">\s*<link rel="stylesheet" href="\/assets\/book\.css">/);
+});
+
+test("bar uses fixed labels and pages have no page-nav", async () => {
+  const doc = await html();
+  const bar = doc.match(/<nav class="bar"[\s\S]*?<\/nav>/)[0];
+  assert.match(bar, /class="nav prev" aria-label="Página anterior"/);
+  assert.match(bar, /class="nav next" aria-label="Página siguiente"/);
+  assert.match(bar, />Índice<\/button>/);
+  assert.doesNotMatch(doc, /class="page-nav"/);
+});
+
+test("Cover: title, subtitle, one eager hero photo and the Abrir hint, nothing else", async () => {
+  const cover = await section("portada");
+  assert.match(cover, /<h1 class="cover-title fit">Álbum de prueba<\/h1>/);
+  assert.match(cover, /<p class="subtitle">Volumen I<\/p>/);
+  assert.match(cover, /<p class="open-hint">Abrir<\/p>/);
+  assert.equal((cover.match(/<img /g) || []).length, 1);
+  assert.match(cover, /class="cover-hero"/);
+  assert.match(cover, /loading="eager" fetchpriority="high"/);
+  assert.doesNotMatch(cover, /<video|<button|<figcaption/);
+  assert.equal(((await html()).match(/fetchpriority="high"/g) || []).length, 1);
 });
 
 test("heading lines and teaser", async () => {
-  assert.match(await html("capitulo/uno"), /Volumen I · Capítulo 1/);
-  assert.match(await html("capitulo/dos"), /Volumen I · Capítulo 2/);
-  assert.match(await html("capitulo/prologo"), /class="eyebrow">Prólogo</);
-  const fin = await html("capitulo/fin");
-  assert.match(fin, /<h1>Continuará…<\/h1>/);
-  assert.doesNotMatch(fin, /<img|<figure|Capítulo \d/);
+  assert.match(await section("capitulo-uno-2"), /<p class="eyebrow">Volumen I · Capítulo 1<\/p>/);
+  assert.match(await section("capitulo-dos-2"), /<p class="eyebrow">Volumen I · Capítulo 2<\/p>/);
+  assert.match(await section("capitulo-prologo-2"), /<p class="eyebrow">Prólogo<\/p>/);
+  const fin = await section("capitulo-fin");
+  assert.match(fin, /<h2 class="teaser-title">Continuará…<\/h2>/);
+  assert.doesNotMatch(fin, /<img|<figure|Capítulo \d|<video/);
 });
 
-test("teaser TOC row has no img and keeps an empty slot", async () => {
-  const toc = await html("indice");
+test("TOC lists every entry with a hash link, no thumbnails; the teaser row has no img", async () => {
+  const toc = await section("indice");
+  assert.doesNotMatch(toc, /<img|<picture/);
+  assert.match(toc, /<h2 class="toc-heading">Índice<\/h2>/);
+  for (const id of ["capitulo-prologo", "capitulo-uno", "capitulo-dos", "capitulo-fin"]) {
+    assert.match(toc, new RegExp(`<a class="toc-row" href="#${id}">`));
+  }
   const row = toc.match(/<li class="toc-item toc-teaser">[\s\S]*?<\/li>/)[0];
-  assert.doesNotMatch(row, /<img|alt=/);
-  assert.match(row, /toc-thumb-empty/);
-  assert.match(toc.match(/<li class="toc-item toc-chapter">[\s\S]*?<\/li>/)[0], /<img [^>]*alt="Portada: Uno &lt;b&gt;"/);
+  assert.doesNotMatch(row, /<img|alt=|toc-date|\d/);
+  const unoRow = toc.match(/<li class="toc-item toc-chapter">[\s\S]*?<\/li>/g).find((r) => r.includes("Uno"));
+  assert.match(unoRow, /Capítulo 1[\s\S]*Uno &lt;b&gt;[\s\S]*Jue 1 de octubre/);
 });
 
-test("absent caption/note/place render nothing; present ones are escaped", async () => {
-  const dos = await html("capitulo/dos");
-  assert.doesNotMatch(dos, /figcaption|class="note"|class="place"|class="date"|<footer/);
-  const uno = await html("capitulo/uno");
-  assert.match(uno, /<figcaption>Con pie<\/figcaption>/);
-  assert.equal((uno.match(/<figcaption>/g) || []).length, 1);
-  assert.match(uno, /<h1>Uno &lt;b&gt;<\/h1>/);
-  assert.match(uno, /<blockquote class="quote">\s*<p>Me agradó<\/p>\s*<footer>1 de octubre<\/footer>/);
+test("absent caption/note/place/date render nothing; present ones are escaped", async () => {
+  const dos = (await section("capitulo-dos-2")) + (await section("capitulo-dos"));
+  assert.doesNotMatch(dos, /figcaption|class="note|class="place"|class="date"|<footer/);
+  const text = await section("capitulo-uno-2");
+  assert.match(text, /<h2 class="chapter-title fit">Uno &lt;b&gt;<\/h2>/);
+  assert.match(text, /<p class="date">Jue 1 de octubre<\/p>/);
+  assert.match(text, /<p class="place">Tepic<\/p>/);
+  assert.match(text, /<div class="note fit"><p>Nota uno<\/p><\/div>/);
+  assert.match(await section("capitulo-uno"), /<figcaption class="fit">Con pie<\/figcaption>/);
+  const quote = await section("capitulo-uno-4");
+  assert.match(quote, /<blockquote class="quote fit">\s*<p>Me agradó<\/p>\s*<footer>1 de octubre<\/footer>/);
+  assert.doesNotMatch(await section("capitulo-prologo-2"), /class="date"|class="place"|class="note/);
 });
 
-test("pictures: eager first, lazy rest, pair wrapper, dimensions", async () => {
-  const uno = await html("capitulo/uno");
-  const imgs = uno.match(/<img [^>]*>/g);
-  assert.equal(imgs.length, 3);
-  assert.match(imgs[0], /loading="eager" fetchpriority="high"/);
-  assert.match(imgs[1], /loading="lazy"/);
-  assert.ok(imgs.every((i) => /width="\d+" height="\d+"/.test(i) && /alt="Foto del capítulo 1"/.test(i)));
-  assert.match(uno, /<source type="image\/webp" srcset="[^"]+\.webp \d+w/);
-  assert.equal((uno.match(/<div class="pair">/g) || []).length, 1);
-  assert.match(uno, /sizes="\(min-width: 700px\) 310px, 50vw"/);
-  const pair = uno.match(/<div class="pair">[\s\S]*?<\/div>/)[0];
+test("pictures: lazy except the Cover hero, pair on one Page, alt fallbacks, sizes", async () => {
+  const doc = await html();
+  const imgs = doc.match(/<img [^>]*>/g);
+  assert.equal(imgs.filter((i) => /loading="eager"/.test(i)).length, 1);
+  assert.ok(imgs.every((i) => /width="\d+" height="\d+"/.test(i) && /alt="[^"]+"/.test(i)));
+  const pair = (await section("capitulo-uno-3")).match(/<div class="pair">[\s\S]*<\/div>/)[0];
   assert.equal((pair.match(/<figure/g) || []).length, 2);
+  assert.match(pair, /alt="Foto del capítulo 1"/);
+  assert.match(pair, /sizes="\(min-width: 768px\) and \(min-aspect-ratio: 1\/1\) 44vw, 94vw"/);
+  assert.match(pair, /<source type="image\/webp" srcset="[^"]+\.webp \d+w/);
+  const uno = await section("capitulo-uno");
+  assert.match(uno, /alt="Foto del capítulo 1"/);
+  assert.match(uno, /loading="lazy"/);
 });
 
 test("prologue hero emits only variants up to maxWidth", async () => {
-  const pro = await html("capitulo/prologo");
-  assert.doesNotMatch(pro, /-1200\./);
-  assert.match(pro, /alt="Foto del prólogo"/);
-  const cover = await fs.readFile(path.join(out, "index.html"), "utf8");
-  assert.match(cover, /class="cover-hero"/);
-  assert.match(cover, /loading="eager" fetchpriority="high"/);
+  const cover = await section("portada");
+  assert.doesNotMatch(cover, /-1200\./);
+  assert.match(await section("capitulo-prologo"), /alt="Foto del prólogo"/);
 });
 
-test("video attributes", async () => {
-  const dos = await html("capitulo/dos");
+test("video renders inline autoplay video with Sonido button and no mp4 link", async () => {
+  const dos = await section("capitulo-dos");
   const tag = dos.match(/<video[^>]*>/)[0];
-  assert.match(tag, /\bcontrols\b/);
-  assert.match(tag, /\bplaysinline\b/);
-  assert.match(tag, /preload="none"/);
-  assert.match(tag, /poster="\/m\/[0-9a-f]{12}-\d+\.jpg"/);
+  for (const a of ["muted", "autoplay", "loop", "playsinline"]) assert.match(tag, new RegExp(`\\b${a}\\b`));
+  assert.match(tag, /preload="metadata"/);
   assert.match(tag, /width="\d+" height="\d+"/);
-  assert.doesNotMatch(tag, /autoplay|muted/);
+  assert.match(tag, /poster="\/m\/[0-9a-f]{12}-\d+\.jpg"/);
+  assert.doesNotMatch(tag, /controls/);
+  assert.match(dos, /<source src="\/m\/[0-9a-f]{12}\.mp4" type="video\/mp4">/);
+  assert.match(dos, /<button type="button" class="vbtn v-sound" aria-label="Sonido" aria-pressed="false" data-no-swipe>/);
+  assert.match(dos, />Sonido<\/span>/);
+  assert.doesNotMatch(dos, /<a [^>]*href="[^"]*\.mp4"/);
+  assert.equal(((await html()).match(/<video/g) || []).length, 1);
 });
 
-test("letters: figure.frame-letter with link and dialog", async () => {
-  const dos = await html("capitulo/dos");
-  assert.equal((dos.match(/<figure class="frame-letter">/g) || []).length, 2);
-  assert.equal((dos.match(/<dialog class="zoom"/g) || []).length, 2);
-  assert.match(dos, /<a class="zoom-open" href="\/m\/[0-9a-f]{12}-1800\.jpg"/);
-  assert.match(dos, /alt="Carta, hoja 2"/);
-  assert.doesNotMatch(dos, /alt=""/);
+test("letters: figure.frame-letter with a link to the full image, no caption, one shared dialog", async () => {
+  const doc = await html();
+  const l3 = await section("capitulo-dos-3");
+  const l4 = await section("capitulo-dos-4");
+  assert.equal((doc.match(/<figure class="frame-letter">/g) || []).length, 2);
+  assert.match(l3, /<a class="zoom-open" href="\/m\/[0-9a-f]{12}-1800\.jpg" data-zoom="\/m\/[0-9a-f]{12}-1800\.jpg"/);
+  assert.match(l4, /alt="Carta, hoja 2"/);
+  assert.doesNotMatch(l3 + l4, /figcaption|alt=""/);
+  assert.equal((doc.match(/<dialog/g) || []).length, 1);
+});
+
+test("Themes: data-theme on every Chapter Page including blanks; none on Cover and TOC", async () => {
+  const doc = await html();
+  const themeOf = (id) => (doc.match(new RegExp(`<section class="page" id="${id}"[^>]*>`))[0].match(/data-theme="([^"]+)"/) || [])[1];
+  assert.equal(themeOf("portada"), undefined);
+  assert.equal(themeOf("indice"), undefined);
+  assert.equal(themeOf("relleno-1"), undefined);
+  for (const id of ["capitulo-prologo", "capitulo-prologo-2", "capitulo-fin", "relleno-2"]) assert.equal(themeOf(id), "crema", id);
+  for (const id of ["capitulo-uno", "capitulo-uno-2", "capitulo-uno-3", "capitulo-uno-4"]) assert.equal(themeOf(id), "rosa", id);
+  for (const id of ["capitulo-dos", "capitulo-dos-2", "capitulo-dos-3", "capitulo-dos-4"]) assert.equal(themeOf(id), "salvia", id);
+  assert.doesNotMatch(doc, /style="[^"]*(color|background)/i);
+  const css = await fs.readFile(path.join(out, "assets", "themes.css"), "utf8");
+  assert.match(css, /:root \{ --paper: #f4ead7;/);
+  assert.equal((css.match(/\[data-theme="/g) || []).length, 8);
+  await assert.rejects(fs.access(path.join(out, "assets", "themes.css.njk")));
+});
+
+test("Legacy URLs redirect to the Hash_Routes; the 404 has no book script", async () => {
+  const idx = await html("indice");
+  assert.match(idx, /<html lang="es">/);
+  assert.match(idx, /<meta name="robots" content="noindex,nofollow,noarchive">/);
+  assert.match(idx, /<meta http-equiv="refresh" content="0;url=\/#indice">/);
+  assert.match(idx, /<a class="button" href="\/#indice">Abrir el álbum<\/a>/);
+  assert.match(idx, /href="\/assets\/book\.css"/);
+  const uno = await html("capitulo/uno");
+  assert.match(uno, /<meta http-equiv="refresh" content="0;url=\/#capitulo-uno">/);
+  assert.match(uno, /href="\/#capitulo-uno">Abrir el álbum</);
+  for (const slug of ["prologo", "dos", "fin"]) await html(`capitulo/${slug}`);
+  const nf = await fs.readFile(path.join(out, "404.html"), "utf8");
+  assert.match(nf, /Esta página no existe/);
+  assert.doesNotMatch(nf, /book\.js/);
+});
+
+test("build-manifest.json is { buildId, ids, media, shell } with ids equal to the Page ids", async () => {
+  const bm = JSON.parse(await fs.readFile(path.join(out, "build-manifest.json"), "utf8"));
+  assert.deepEqual(Object.keys(bm), ["buildId", "ids", "media", "shell"]);
+  assert.match(bm.buildId, /^[0-9a-f]{12}$/);
+  const doc = await html();
+  assert.deepEqual(bm.ids, [...doc.matchAll(/<section class="page" id="([^"]+)"/g)].map((m) => m[1]));
+  assert.ok(bm.shell.includes("/") && bm.shell.includes("/assets/themes.css") && bm.shell.includes("/assets/book.js"));
+  assert.ok(bm.shell.every((u) => u === "/" || u.startsWith("/assets/")));
 });

@@ -2,4 +2,4 @@
 permalink: /build-manifest.json
 eleventyExcludeFromCollections: true
 ---
-{{ { buildId: buildInfo.buildId, media: buildInfo.media, pages: buildInfo.pages } | dump(2) | safe }}
+{{ { buildId: buildInfo.buildId, ids: buildInfo.ids, media: buildInfo.media, shell: buildInfo.shell } | dump(2) | safe }}

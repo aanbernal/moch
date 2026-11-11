@@ -10,21 +10,15 @@
 {%- endif -%}
 {%- endmacro %}
 
-{#- Letter: figure.frame-letter (frame lives on the figure, never on the image). The link goes to the
-    full image, so it works without JS; book.js turns it into a button that opens the dialog. -#}
-{% macro letter(p, alt, sizes, eager, id, caption) -%}
+{#- Letter: figure.frame-letter (frame lives on the figure, never on the image), no caption and no text about
+    the letter. The link goes to the full image, so it works without JS; book.js turns it into a button that
+    opens the one shared dialog and reads the image from `data-zoom` (url) with its size and the thumbnail alt. -#}
+{% macro letter(p, alt, sizes, eager) -%}
 {%- if p -%}
 <figure class="frame-letter">
-  <a class="zoom-open" href="{{ p.full.url }}" data-zoom="{{ id }}" aria-haspopup="dialog">
+  <a class="zoom-open" href="{{ p.full.url }}" data-zoom="{{ p.full.url }}" data-zoom-width="{{ p.full.width }}" data-zoom-height="{{ p.full.height }}" aria-haspopup="dialog">
     {{ picture(p, alt, sizes, eager) }}
   </a>
-  {%- if caption %}
-  <figcaption>{{ caption }}</figcaption>
-  {%- endif %}
 </figure>
-<dialog class="zoom" id="{{ id }}" aria-label="{{ alt }}">
-  <form method="dialog"><button class="zoom-close" aria-label="Cerrar">Cerrar</button></form>
-  <img src="{{ p.full.url }}" width="{{ p.full.width }}" height="{{ p.full.height }}" alt="{{ alt }}" loading="lazy" decoding="async">
-</dialog>
 {%- endif -%}
 {%- endmacro %}

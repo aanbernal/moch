@@ -1,0 +1,19 @@
+{#- TOC Page: up to 9 rows. No thumbnails. The teaser row has no number and no <img>. -#}
+        <div class="toc-body">
+{%- if page.heading %}
+          <h2 class="toc-heading">Índice</h2>
+{%- endif %}
+          <ol class="toc-list">
+{%- for e in page.entries %}
+            <li class="toc-item {{ 'toc-teaser' if e.teaser else 'toc-chapter' }}">
+              <a class="toc-row" href="#{{ e.id }}">
+                <span class="toc-label">{{ e.label }}</span>
+                <span class="toc-title">{{ e.title }}</span>
+{%- if e.dateText %}
+                <span class="toc-date">{{ e.dateText }}</span>
+{%- endif %}
+              </a>
+            </li>
+{%- endfor %}
+          </ol>
+        </div>

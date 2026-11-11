@@ -1,0 +1,5 @@
+{#- Title_Spread, left Page: the Chapter's cover item (photo, letter or video) with its caption. -#}
+{%- set it = page.item -%}
+{%- if it %}
+{% include "pages/item.njk" %}
+{%- endif %}

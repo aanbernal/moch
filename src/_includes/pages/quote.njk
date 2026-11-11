@@ -1,0 +1,9 @@
+{#- One quote, verbatim (autoescaped). The closing quote of "graduacion" carries no chapter label. -#}
+        <div class="quote-body">
+          <blockquote class="quote fit">
+            <p>{{ page.text }}</p>
+{%- if page.when %}
+            <footer>{{ page.when }}</footer>
+{%- endif %}
+          </blockquote>
+        </div>

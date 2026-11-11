@@ -10,7 +10,9 @@ export default function (eleventyConfig) {
   // Nunjucks autoescape stays on (it is the default; set explicitly on purpose).
   eleventyConfig.setNunjucksEnvironmentOptions({ autoescape: true });
 
-  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/assets", {
+    filter: (src) => !src.endsWith(".njk"),
+  });
   eleventyConfig.addPassthroughCopy({ "build/media": "m" });
   eleventyConfig.addPassthroughCopy("src/admin");
 
@@ -21,6 +23,8 @@ export default function (eleventyConfig) {
     shipAdmin({ distDir });
     // index.njk is template source (rendered to admin/index.html); drop the raw passthrough copy.
     fs.rmSync(path.join(distDir, "admin", "index.njk"), { force: true });
+    // Same for the generated stylesheet: themes.css.njk is rendered to assets/themes.css.
+    fs.rmSync(path.join(distDir, "assets", "themes.css.njk"), { force: true });
   });
 
   return {

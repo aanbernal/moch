@@ -1,0 +1,14 @@
+{#- Cover: the title, the subtitle, exactly one photo (the 800 px hero, eager) and the "Abrir" hint. Never a video. -#}
+{%- from "picture.njk" import picture -%}
+{%- set hero = media[page.item.slug + "/" + page.item.file] if page.item else null -%}
+{%- set heroPick = picset.pick(hero, 800) if hero else null -%}
+        <div class="cover-body">
+{%- if heroPick %}
+          <div class="media-box">{{ picture(heroPick, page.item.alt or "Portada del álbum", "(min-width: 768px) and (min-aspect-ratio: 1/1) 44vw, 94vw", true, "cover-hero") }}</div>
+{%- endif %}
+          <h1 class="cover-title fit">{{ page.title }}</h1>
+{%- if page.subtitle %}
+          <p class="subtitle">{{ page.subtitle }}</p>
+{%- endif %}
+          <p class="open-hint">Abrir</p>
+        </div>

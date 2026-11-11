@@ -1,0 +1,37 @@
+{#- One media item (`it`) of a Page: photo, letter (photo with frame "letter", or one PDF page) or video.
+    Expects `page`, `it`, `media`, `picset`. Every optional element and its wrapper sits behind {% if %}. -#}
+{%- from "picture.njk" import picture, letter -%}
+{%- set ofChapter = ("del capítulo " + page.number) if page.number else "del prólogo" -%}
+{%- set entry = media[it.slug + "/" + it.file] -%}
+{%- set boxSizes = "(min-width: 768px) and (min-aspect-ratio: 1/1) 44vw, 94vw" -%}
+{%- set smallSizes = "(min-width: 768px) and (min-aspect-ratio: 1/1) 27vw, 56vw" -%}
+{%- if entry and it.type == "photo" and it.frame == "letter" %}
+        {{ letter(picset.pick(entry, it.maxWidth), it.alt or ("Foto " + ofChapter), boxSizes, false) }}
+{%- elif entry and it.type == "pdf" and entry.pages and entry.pages[it.pdfIndex] %}
+{%- set pg = entry.pages[it.pdfIndex] %}
+        {{ letter(picset.pick(pg, 0), pg.alt or it.alt or ("Foto " + ofChapter), boxSizes, false) }}
+{%- elif entry and it.type == "photo" %}
+{%- set pick = picset.pick(entry, it.maxWidth) %}
+        <figure class="photo{% if it.size == "small" %} size-small{% endif %}">
+          <div class="media-box">{{ picture(pick, it.alt or ("Foto " + ofChapter), smallSizes if it.size == "small" else boxSizes, false) }}</div>
+{%- if it.caption %}
+          <figcaption class="fit">{{ it.caption }}</figcaption>
+{%- endif %}
+        </figure>
+{%- elif entry and it.type == "video" and entry.url %}
+{%- set vp = picset.pick(entry, 800) %}
+        <figure class="video{% if it.size == "small" %} size-small{% endif %}">
+          <div class="media-box">
+            <div class="video-box" data-video>
+              <video muted autoplay loop playsinline preload="metadata" width="{{ entry.width }}" height="{{ entry.height }}"{% if vp %} poster="{{ vp.fallback.url }}"{% endif %} aria-label="{{ it.alt or ("Video " + ofChapter) }}">
+                <source src="{{ entry.url }}" type="video/mp4">
+              </video>
+              <button type="button" class="vbtn v-sound" aria-label="Sonido" aria-pressed="false" data-no-swipe><span aria-hidden="true">🔈</span><span class="vbtn-text">Sonido</span></button>
+              <button type="button" class="vbtn v-badge" aria-label="Reproducir video" data-no-swipe hidden><span aria-hidden="true">▶</span></button>
+            </div>
+          </div>
+{%- if it.caption %}
+          <figcaption class="fit">{{ it.caption }}</figcaption>
+{%- endif %}
+        </figure>
+{%- endif %}

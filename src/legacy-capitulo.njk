@@ -1,0 +1,19 @@
+---
+layout: base.njk
+pagination:
+  data: chapters
+  size: 1
+  alias: ch
+permalink: "/capitulo/{{ ch.slug }}/index.html"
+plain: true
+bodyClass: legacy
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  pageTitle: "{{ ch.title | safe }}"
+  refreshTo: "/#capitulo-{{ ch.slug }}"
+---
+<main class="notfound legacy-redirect">
+  <h1>{{ site.title }}</h1>
+  <p>El álbum ahora se abre en una sola página.</p>
+  <p><a class="button" href="/#capitulo-{{ ch.slug }}">Abrir el álbum</a></p>
+</main>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es"{% if htmlClass %} class="{{ htmlClass }}"{% endif %}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -7,11 +7,17 @@
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="{{ site.themeColor or '#f4ead7' }}">
+{%- if refreshTo %}
+<meta http-equiv="refresh" content="0;url={{ refreshTo }}">
+{%- endif %}
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/themes.css">
 <link rel="stylesheet" href="/assets/book.css">
-<script src="/assets/book.js" defer></script>
+{%- if not plain %}
+<script type="module" src="/assets/book.js"></script>
+{%- endif %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 {{ content | safe }}

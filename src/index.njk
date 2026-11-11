@@ -2,21 +2,61 @@
 layout: base.njk
 permalink: /index.html
 pageTitle: Portada
-bodyClass: cover
+htmlClass: no-js
 eleventyExcludeFromCollections: true
 ---
-{%- from "picture.njk" import picture -%}
-{%- set prologue = null -%}
-{%- for ch in chapters -%}{%- if ch.kind == "prologue" and not prologue -%}{%- set prologue = ch -%}{%- endif -%}{%- endfor -%}
-{%- set hero = media[prologue.slug + "/" + prologue.cover] if (prologue and prologue.cover) else null -%}
-{%- set heroPick = picset.pick(hero, 800) if hero else null -%}
-<main class="cover-page">
-{%- if heroPick %}
-  {{ picture(heroPick, prologue.title or "Portada del álbum", "(min-width: 700px) 620px, 100vw", true, "cover-hero") }}
+{#- The whole Book in one document (design 3.6). One <section class="page"> per descriptor of book.pages, in desktop order,
+    blanks included. Page bodies live in _includes/pages/. -#}
+<div class="stage">
+  <main id="book" class="book" data-pages="1">
+    <div class="pages">
+{%- for page in book.pages %}
+      <section class="page" id="{{ page.id }}" data-kind="{{ page.kind }}"{% if page.label %} data-label="{{ page.label }}"{% endif %}{% if page.theme %} data-theme="{{ page.theme }}"{% endif %}{% if page.kind != "cover" %} inert aria-hidden="true"{% endif %}>
+{%- if page.kind == "cover" %}
+{% include "pages/cover.njk" %}
+{%- elif page.kind == "toc" %}
+{% include "pages/toc.njk" %}
+{%- elif page.kind == "title-media" %}
+{% include "pages/title-media.njk" %}
+{%- elif page.kind == "title-text" %}
+{% include "pages/title-text.njk" %}
+{%- elif page.kind == "note-cont" %}
+{% include "pages/note-cont.njk" %}
+{%- elif page.kind == "item" %}
+{%- if page.items %}
+{% include "pages/pair.njk" %}
+{%- else %}
+{%- set it = page.item -%}
+{% include "pages/item.njk" %}
 {%- endif %}
-  <h1>{{ site.title }}</h1>
-  {%- if site.subtitle %}
-  <p class="subtitle">{{ site.subtitle }}</p>
-  {%- endif %}
-  <a class="button open" href="/indice/">Abrir</a>
-</main>
+{%- elif page.kind == "quote" %}
+{% include "pages/quote.njk" %}
+{%- elif page.kind == "teaser" %}
+{% include "pages/teaser.njk" %}
+{%- else %}
+{% include "pages/blank.njk" %}
+{%- endif %}
+
+      </section>
+{%- endfor %}
+    </div>
+    <div class="flipper" hidden>
+      <div class="flip-leaf">
+        <div class="flip-front"><i class="sheen"></i><i class="fold-shade"></i></div>
+        <div class="flip-back"><i class="paper-back"></i><i class="sheen"></i><i class="fold-shade"></i></div>
+      </div>
+      <i class="cast"></i>
+    </div>
+  </main>
+  <nav class="bar" aria-label="Navegación del libro">
+    <button type="button" class="nav prev" aria-label="Página anterior"><span aria-hidden="true">‹</span></button>
+    <button type="button" class="nav toc">Índice</button>
+    <button type="button" class="nav next" aria-label="Página siguiente"><span aria-hidden="true">›</span></button>
+  </nav>
+</div>
+<p id="anuncio" class="sr-only" aria-live="polite"></p>
+<dialog class="zoom" aria-label="Vista ampliada">
+  <form method="dialog"><button type="submit" class="zoom-close" aria-label="Cerrar">Cerrar</button></form>
+  <div class="zoom-stage"></div>
+</dialog>
+<noscript><p class="noscript">Activa JavaScript para pasar las páginas. <a href="#indice">Ir al índice</a></p></noscript>

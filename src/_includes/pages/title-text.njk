@@ -1,0 +1,18 @@
+{#- Title_Spread, right Page: label line, title, date, place and the first part of the note. Missing fields render nothing. -#}
+        <div class="title-body">
+          <header class="chapter-head">
+{%- if page.kicker %}
+            <p class="eyebrow">{{ page.kicker }}</p>
+{%- endif %}
+            <h2 class="chapter-title fit">{{ page.title }}</h2>
+{%- if page.dateText %}
+            <p class="date">{{ page.dateText }}</p>
+{%- endif %}
+{%- if page.place %}
+            <p class="place">{{ page.place }}</p>
+{%- endif %}
+          </header>
+{%- if page.text %}
+          <div class="note fit"><p>{{ page.text }}</p></div>
+{%- endif %}
+        </div>

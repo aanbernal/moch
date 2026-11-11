@@ -1,0 +1,11 @@
+---
+permalink: /assets/themes.css
+eleventyExcludeFromCollections: true
+---
+/* Generated from lib/themes.mjs. Do not edit dist/assets/themes.css. */
+{%- for t in palette %}{% if t.name == baseTheme %}
+:root { --paper: {{ t.paper }}; --ink: {{ t.ink }}; --accent: {{ t.accent }}; --tape: {{ t.tape }}; }
+{%- endif %}{% endfor %}
+{%- for t in palette %}
+[data-theme="{{ t.name }}"] { --paper: {{ t.paper }}; --ink: {{ t.ink }}; --accent: {{ t.accent }}; --tape: {{ t.tape }}; }
+{%- endfor %}

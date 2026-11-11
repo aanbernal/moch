@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildInfo } from "../../lib/build-info.mjs";
 import { loadChapters } from "../../lib/chapters-loader.mjs";
+import { buildPages } from "../../lib/book-model.mjs";
+import site from "./site.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -17,7 +19,10 @@ function readManifest() {
 
 // Pure build manifest (no timestamps) plus the deploy stamp and the inlined service worker logic.
 export default function () {
-  const info = buildInfo(readManifest(), loadChapters());
+  const chapters = loadChapters();
+  const fontFiles = fs.readdirSync(path.join(root, "src/assets/fonts")).filter((f) => f.endsWith(".woff2"));
+  const ids = buildPages(chapters, site).map((p) => p.id);
+  const info = buildInfo(readManifest(), chapters, { ids, fontFiles });
   const sha = process.env.GITHUB_SHA || "local";
   // sw-logic.js is inlined into /sw.js so the worker is one self-contained script (no importScripts).
   const swLogic = fs
