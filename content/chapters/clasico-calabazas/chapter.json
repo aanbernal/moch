@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "order": 110,
+  "kind": "chapter",
+  "title": "Clásico y calabazas",
+  "dateText": "25 de octubre, 2026",
+  "note": "Vimos el Clásico en su casa, ambos con la camiseta del Barça, y por la tarde hicimos un florero de calabaza en Bohemio Café y Arte.",
+  "draft": true,
+  "cover": "img-20261025-135148.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "img-20261025-135148.jpg",
+      "alt": "Selfie con la camiseta del Barça"
+    },
+    {
+      "type": "photo",
+      "file": "mvimg-20261025-134359.jpg",
+      "alt": "Karla con la camiseta del Barça"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261025-wa0146.jpg",
+      "alt": "Los dos con floreros de calabaza"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261025-wa0115.jpg",
+      "alt": "Karla en el taller de calabazas"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261025-wa0126.jpg",
+      "alt": "Dos calabazas sobre la mesa"
+    },
+    {
+      "type": "video",
+      "file": "1025-karla-arranging-flowers-short.mp4"
+    },
+    {
+      "type": "quote",
+      "text": "Te entiendo. Yo no quiero solo la versión bonita de ti, quiero conocerte toda, completa. Lo bueno y lo malo es lo que te hizo que eres, y a mí me gusta quien eres",
+      "when": "25 de octubre"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261025-201839.jpg",
+      "alt": "Foto en el camino de regreso"
+    }
+  ]
+}

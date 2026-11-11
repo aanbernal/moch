@@ -60,6 +60,517 @@
           "alt": "Karla en el escenario"
         }
       ]
+    },
+    {
+      "slug": "ella-invita",
+      "order": 20,
+      "kind": "chapter",
+      "title": "Ella invita",
+      "dateText": "29 de septiembre, 2026",
+      "note": "Ella me invitó a salir.",
+      "draft": true,
+      "cover": "whatsapp-convo-her-asking-me-out.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/0929/WhatsApp-convo-her-asking-me-out.jpg",
+          "alt": "Captura de la conversación en la que ella me invita a salir"
+        },
+        {
+          "type": "quote",
+          "text": "Para la próxima sería divertido ir solo contigo",
+          "when": "29 de septiembre"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/0929/IMG-20260929-WA0085.jpg",
+          "alt": "Foto del 29 de septiembre"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/0929/IMG-20260929-WA0087.jpg",
+          "alt": "Foto del 29 de septiembre, segunda"
+        },
+        {
+          "type": "quote",
+          "text": "Si hay café yo soy feliz",
+          "when": "29 de septiembre"
+        },
+        {
+          "type": "quote",
+          "text": "Siempre es hora de café",
+          "when": "29 de septiembre"
+        }
+      ]
+    },
+    {
+      "slug": "primera-cita",
+      "order": 30,
+      "kind": "chapter",
+      "title": "La primera cita",
+      "dateText": "Jue 1 de octubre, 2026",
+      "place": "Lienzo Café, Tepic",
+      "note": "Nuestra primera cita fue en Lienzo Café, en Tepic.",
+      "draft": true,
+      "cover": "first-date-flowers.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1001/first-date-flowers.jpg",
+          "alt": "Flores de la primera cita"
+        },
+        {
+          "type": "quote",
+          "text": "Le enseñé las flores",
+          "when": "1 de octubre"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1001/IMG_20261024_134512.jpg",
+          "alt": "Foto de la primera cita"
+        },
+        {
+          "type": "quote",
+          "text": "Me agradó el date",
+          "when": "1 de octubre"
+        }
+      ]
+    },
+    {
+      "slug": "segunda-cita",
+      "order": 40,
+      "kind": "chapter",
+      "title": "La segunda cita",
+      "dateText": "Dom 4 de octubre, 2026",
+      "note": "Nuestra segunda cita fue el domingo 4 de octubre.",
+      "draft": true,
+      "cover": "img-20261004-wa0062.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1004/IMG-20261004-WA0062.jpg",
+          "alt": "Foto de la segunda cita"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1004/IMG-20261004-WA0065.jpg",
+          "alt": "Foto de la segunda cita, segunda"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1004/IMG-20261004-WA0066.jpg",
+          "alt": "Foto de la segunda cita, tercera"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1004/IMG-20261004-WA0068.jpg",
+          "alt": "Foto de la segunda cita, cuarta"
+        },
+        {
+          "type": "quote",
+          "text": "Me da gusto haberme animado a mandarte mensaje",
+          "when": "2 de octubre"
+        }
+      ]
+    },
+    {
+      "slug": "tercera-cita",
+      "order": 50,
+      "kind": "chapter",
+      "title": "La tercera cita",
+      "dateText": "Jue 8 de octubre, 2026",
+      "note": "Nuestra tercera cita fue el jueves 8 de octubre.",
+      "draft": true,
+      "cover": "img-20261009-032021.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1008/IMG_20261009_032021.jpg",
+          "planPath": "1008/IMG-20261009-032021",
+          "alt": "Foto de la tercera cita"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1008/IMG-20261008-WA0060.jpg",
+          "alt": "Foto de la tercera cita, segunda"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1008/IMG_20261008_222901.jpg",
+          "alt": "Foto de la tercera cita, tercera"
+        }
+      ]
+    },
+    {
+      "slug": "gimnasio",
+      "order": 60,
+      "kind": "chapter",
+      "title": "Cita en el gimnasio",
+      "dateText": "14 de octubre, 2026",
+      "note": "Fuimos juntos al gimnasio el 14 de octubre.",
+      "draft": true,
+      "cover": "img-20261014-wa0097.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1014/IMG-20261014-WA0097.jpg",
+          "alt": "Foto de la cita en el gimnasio"
+        },
+        {
+          "type": "video",
+          "from": "shorts/1014_karla_gym_short.mp4"
+        },
+        {
+          "type": "video",
+          "from": "shorts/1014_angel_gym_short.mp4"
+        },
+        {
+          "type": "video",
+          "from": "new-drive/1014/VID-20261014-WA0098.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "kaax-cafe",
+      "order": 70,
+      "kind": "chapter",
+      "title": "Kaax Café",
+      "dateText": "15 de octubre, 2026",
+      "place": "Kaax Café",
+      "note": "Fuimos a Kaax Café el 15 de octubre.",
+      "draft": true,
+      "cover": "img-20261015-wa0086.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1015/IMG-20261015-WA0086.jpg",
+          "alt": "Foto en Kaax Café"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1015/MVIMG_20261015_145404.jpg",
+          "alt": "Foto en Kaax Café, segunda",
+          "pairWithPrevious": true
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1015/IMG_20261015_155423.jpg",
+          "alt": "Foto en Kaax Café, tercera"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1015/IMG-20261015-WA0122.jpg",
+          "alt": "Foto en Kaax Café, cuarta"
+        }
+      ]
+    },
+    {
+      "slug": "en-su-casa",
+      "order": 80,
+      "kind": "chapter",
+      "title": "En su casa",
+      "dateText": "17 de octubre, 2026",
+      "note": "Estuvimos en su casa el 17 de octubre.",
+      "draft": true,
+      "cover": "mvimg-20261017-174928.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1017/MVIMG_20261017_174928.jpg",
+          "alt": "Foto en su casa"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1017/IMG_20261017_174956.jpg",
+          "alt": "Foto en su casa, segunda"
+        },
+        {
+          "type": "video",
+          "from": "shorts/1017_painting_costumes_short.mp4"
+        },
+        {
+          "type": "video",
+          "from": "shorts/1017_first_kiss_short.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "cartas",
+      "order": 90,
+      "kind": "chapter",
+      "title": "Cartas",
+      "dateText": "Noche del 17 de octubre, 2026",
+      "draft": true,
+      "cover": "hoja1.jpeg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/CARTAS/Para Karla/HOJA1.jpeg",
+          "alt": "Carta de Angel, hoja 1",
+          "frame": "letter"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/CARTAS/Para Karla/HOJA2.jpeg",
+          "alt": "Carta de Angel, hoja 2",
+          "frame": "letter"
+        },
+        {
+          "type": "pdf",
+          "from": "new-drive/CARTAS/Para Manuel .pdf",
+          "pages": [1, 2],
+          "alt": "Carta de Karla, hoja {n}",
+          "frame": "letter"
+        }
+      ]
+    },
+    {
+      "slug": "spooky-fest",
+      "order": 100,
+      "kind": "chapter",
+      "title": "Spooky Fest",
+      "dateText": "23 de octubre, 2026",
+      "place": "Casino Los Naranjos",
+      "note": "Fuimos al Spooky Fest en Casino Los Naranjos y conocí a sus amigas y amigos.",
+      "draft": true,
+      "cover": "img-20261024-wa0033.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1023/IMG-20261024-WA0033.jpg",
+          "alt": "Selfie en el espejo en el Spooky Fest"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1023/IMG-20261024-WA0046.jpg",
+          "alt": "Foto de cerca con luces al aire libre"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1023/IMG-20261024-WA0041.jpg",
+          "alt": "Foto de cuerpo completo en el Spooky Fest"
+        }
+      ]
+    },
+    {
+      "slug": "clasico-calabazas",
+      "order": 110,
+      "kind": "chapter",
+      "title": "Clásico y calabazas",
+      "dateText": "25 de octubre, 2026",
+      "note": "Vimos el Clásico en su casa, ambos con la camiseta del Barça, y por la tarde hicimos un florero de calabaza en Bohemio Café y Arte.",
+      "draft": true,
+      "cover": "img-20261025-135148.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1025/IMG_20261025_135148.jpg",
+          "alt": "Selfie con la camiseta del Barça"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1025/MVIMG_20261025_134359.jpg",
+          "alt": "Karla con la camiseta del Barça"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1025/IMG-20261025-WA0146.jpg",
+          "alt": "Los dos con floreros de calabaza"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1025/IMG-20261025-WA0115.jpg",
+          "alt": "Karla en el taller de calabazas"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1025/IMG-20261025-WA0126.jpg",
+          "alt": "Dos calabazas sobre la mesa"
+        },
+        {
+          "type": "video",
+          "from": "shorts/1025_karla_arranging_flowers_short.mp4"
+        },
+        {
+          "type": "quote",
+          "text": "Te entiendo. Yo no quiero solo la versión bonita de ti, quiero conocerte toda, completa. Lo bueno y lo malo es lo que te hizo que eres, y a mí me gusta quien eres",
+          "when": "25 de octubre"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1025/IMG_20261025_201839.jpg",
+          "planPath": "1025/IMG-20261025-201839",
+          "alt": "Foto en el camino de regreso"
+        }
+      ]
+    },
+    {
+      "slug": "la-loma",
+      "order": 120,
+      "kind": "chapter",
+      "title": "La Loma",
+      "dateText": "26 de octubre, 2026",
+      "place": "Parque La Loma",
+      "note": "Fui a ayudarla a grabar el video de su convocatoria en el Parque La Loma.",
+      "draft": true,
+      "cover": "mvimg-20261026-173232.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1026/MVIMG_20261026_173232.jpg",
+          "alt": "Foto en el Parque La Loma"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1026/MVIMG_20261026_183502.jpg",
+          "alt": "Foto en el pasto al anochecer"
+        },
+        {
+          "type": "video",
+          "from": "new-drive/1026/VID-20261026-WA0165.mp4"
+        }
+      ]
+    },
+    {
+      "slug": "jsconf-gdl",
+      "order": 130,
+      "kind": "chapter",
+      "title": "JSConf GDL",
+      "dateText": "29 y 30 de octubre, 2026",
+      "place": "Guadalajara",
+      "note": "Fuimos juntos a JSConf en Guadalajara, con amigos.",
+      "draft": true,
+      "cover": "img-20261029-wa0106.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1029-30/IMG-20261029-WA0106.jpg",
+          "alt": "Bolsas amarillas de JSConf"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1029-30/MVIMG_20261030_160325.jpg",
+          "alt": "Karla con artículos de Capital One"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1029-30/MVIMG_20261030_160354.jpg",
+          "alt": "Karla con artículos de Capital One, segunda"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1029-30/IMG-20261030-WA0019.jpg",
+          "alt": "Selfie en el espejo"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1029-30/IMG-20261030-WA0104.jpg",
+          "alt": "En el camión de regreso"
+        }
+      ]
+    },
+    {
+      "slug": "un-mes",
+      "order": 140,
+      "kind": "chapter",
+      "title": "Un mes",
+      "dateText": "1 de noviembre, 2026",
+      "note": "Un mes desde la primera cita.",
+      "draft": true,
+      "cover": "img-20261101-wa0039.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1101/IMG-20261101-WA0039.jpg",
+          "alt": "Ramo de flores con una tarjeta"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1101/IMG-20261101-WA0041.jpg",
+          "alt": "Selfie en el espejo con el ramo"
+        },
+        {
+          "type": "video",
+          "from": "new-drive/1101/VID-20261101-WA0040.mp4"
+        },
+        {
+          "type": "quote",
+          "text": "Me encantaron y más sabiendo que fue con intenciones de recordar que llevamos un mes del primer date",
+          "when": "2 de noviembre"
+        }
+      ]
+    },
+    {
+      "slug": "lienzo-boulevard",
+      "order": 150,
+      "kind": "chapter",
+      "title": "Lienzo Boulevard",
+      "dateText": "5 de noviembre, 2026",
+      "place": "Lienzo Boulevard",
+      "note": "Cita de estudio en Lienzo Boulevard, mientras ella trabajaba en su cartel.",
+      "draft": true,
+      "cover": "img-20261105-wa0136.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1105/IMG-20261105-WA0136.jpg",
+          "alt": "Foto en Lienzo Boulevard"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1105/IMG-20261105-WA0138.jpg",
+          "alt": "Foto en Lienzo Boulevard, segunda"
+        }
+      ]
+    },
+    {
+      "slug": "graduacion",
+      "order": 160,
+      "kind": "chapter",
+      "title": "Fotos de graduación",
+      "dateText": "7 de noviembre, 2026",
+      "note": "Karla me acompañó a mis fotos de graduación.",
+      "draft": true,
+      "cover": "img-20261107-wa0085.jpg",
+      "media": [
+        {
+          "type": "photo",
+          "from": "new-drive/1107/IMG-20261107-WA0085.jpg",
+          "alt": "Foto de graduación"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1107/IMG-20261107-WA0117.jpg",
+          "alt": "Foto de graduación, segunda"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1107/IMG-20261107-WA0125.jpg",
+          "alt": "Foto de graduación, tercera"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1107/IMG_20261107_202653.jpg",
+          "alt": "Selfie de noche"
+        },
+        {
+          "type": "photo",
+          "from": "new-drive/1107/IMG_20261107_202709.jpg",
+          "alt": "Selfie de noche, segunda"
+        },
+        {
+          "type": "quote",
+          "text": "Lo mejor de mi año yo creo conocerte / Del mío también / Hiciste feliz mi año",
+          "when": "6 de noviembre"
+        }
+      ]
+    },
+    {
+      "slug": "continuara",
+      "order": 170,
+      "kind": "teaser",
+      "title": "Continuará…",
+      "media": []
     }
   ]
 }

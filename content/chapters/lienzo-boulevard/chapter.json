@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "order": 150,
+  "kind": "chapter",
+  "title": "Lienzo Boulevard",
+  "dateText": "5 de noviembre, 2026",
+  "place": "Lienzo Boulevard",
+  "note": "Cita de estudio en Lienzo Boulevard, mientras ella trabajaba en su cartel.",
+  "draft": true,
+  "cover": "img-20261105-wa0136.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "img-20261105-wa0136.jpg",
+      "alt": "Foto en Lienzo Boulevard"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261105-wa0138.jpg",
+      "alt": "Foto en Lienzo Boulevard, segunda"
+    }
+  ]
+}

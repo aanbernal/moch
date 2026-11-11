@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "order": 60,
+  "kind": "chapter",
+  "title": "Cita en el gimnasio",
+  "dateText": "14 de octubre, 2026",
+  "note": "Fuimos juntos al gimnasio el 14 de octubre.",
+  "draft": true,
+  "cover": "img-20261014-wa0097.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "img-20261014-wa0097.jpg",
+      "alt": "Foto de la cita en el gimnasio"
+    },
+    {
+      "type": "video",
+      "file": "1014-karla-gym-short.mp4"
+    },
+    {
+      "type": "video",
+      "file": "1014-angel-gym-short.mp4"
+    },
+    {
+      "type": "video",
+      "file": "vid-20261014-wa0098.mp4"
+    }
+  ]
+}

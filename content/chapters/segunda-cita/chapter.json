@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "order": 40,
+  "kind": "chapter",
+  "title": "La segunda cita",
+  "dateText": "Dom 4 de octubre, 2026",
+  "note": "Nuestra segunda cita fue el domingo 4 de octubre.",
+  "draft": true,
+  "cover": "img-20261004-wa0062.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "img-20261004-wa0062.jpg",
+      "alt": "Foto de la segunda cita"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261004-wa0065.jpg",
+      "alt": "Foto de la segunda cita, segunda"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261004-wa0066.jpg",
+      "alt": "Foto de la segunda cita, tercera"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261004-wa0068.jpg",
+      "alt": "Foto de la segunda cita, cuarta"
+    },
+    {
+      "type": "quote",
+      "text": "Me da gusto haberme animado a mandarte mensaje",
+      "when": "2 de octubre"
+    }
+  ]
+}

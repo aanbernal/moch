@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "order": 160,
+  "kind": "chapter",
+  "title": "Fotos de graduación",
+  "dateText": "7 de noviembre, 2026",
+  "note": "Karla me acompañó a mis fotos de graduación.",
+  "draft": true,
+  "cover": "img-20261107-wa0085.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "img-20261107-wa0085.jpg",
+      "alt": "Foto de graduación"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261107-wa0117.jpg",
+      "alt": "Foto de graduación, segunda"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261107-wa0125.jpg",
+      "alt": "Foto de graduación, tercera"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261107-202653.jpg",
+      "alt": "Selfie de noche"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261107-202709.jpg",
+      "alt": "Selfie de noche, segunda"
+    },
+    {
+      "type": "quote",
+      "text": "Lo mejor de mi año yo creo conocerte / Del mío también / Hiciste feliz mi año",
+      "when": "6 de noviembre"
+    }
+  ]
+}

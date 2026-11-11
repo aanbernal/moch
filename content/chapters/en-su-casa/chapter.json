@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "order": 80,
+  "kind": "chapter",
+  "title": "En su casa",
+  "dateText": "17 de octubre, 2026",
+  "note": "Estuvimos en su casa el 17 de octubre.",
+  "draft": true,
+  "cover": "mvimg-20261017-174928.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "mvimg-20261017-174928.jpg",
+      "alt": "Foto en su casa"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261017-174956.jpg",
+      "alt": "Foto en su casa, segunda"
+    },
+    {
+      "type": "video",
+      "file": "1017-painting-costumes-short.mp4"
+    },
+    {
+      "type": "video",
+      "file": "1017-first-kiss-short.mp4"
+    }
+  ]
+}

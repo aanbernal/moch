@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "order": 90,
+  "kind": "chapter",
+  "title": "Cartas",
+  "dateText": "Noche del 17 de octubre, 2026",
+  "draft": true,
+  "cover": "hoja1.jpeg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "hoja1.jpeg",
+      "alt": "Carta de Angel, hoja 1",
+      "frame": "letter"
+    },
+    {
+      "type": "photo",
+      "file": "hoja2.jpeg",
+      "alt": "Carta de Angel, hoja 2",
+      "frame": "letter"
+    },
+    {
+      "type": "pdf",
+      "file": "para-manuel.pdf",
+      "pages": [
+        1,
+        2
+      ],
+      "alt": "Carta de Karla, hoja {n}",
+      "frame": "letter"
+    }
+  ]
+}

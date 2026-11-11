@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "order": 140,
+  "kind": "chapter",
+  "title": "Un mes",
+  "dateText": "1 de noviembre, 2026",
+  "note": "Un mes desde la primera cita.",
+  "draft": true,
+  "cover": "img-20261101-wa0039.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "img-20261101-wa0039.jpg",
+      "alt": "Ramo de flores con una tarjeta"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261101-wa0041.jpg",
+      "alt": "Selfie en el espejo con el ramo"
+    },
+    {
+      "type": "video",
+      "file": "vid-20261101-wa0040.mp4"
+    },
+    {
+      "type": "quote",
+      "text": "Me encantaron y más sabiendo que fue con intenciones de recordar que llevamos un mes del primer date",
+      "when": "2 de noviembre"
+    }
+  ]
+}

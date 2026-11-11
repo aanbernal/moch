@@ -602,6 +602,14 @@ async function main() {
   check("La lista ya no muestra el capítulo de prueba", !(await listTitles()).includes(TEST_TITLE));
   const export2 = path.join(E2E, "export-2");
   await mock.exportTo(export2);
+  // Git (and so the mock tree) cannot store empty directories; ignore them in the comparison.
+  const pruneEmpty = async (dir) => {
+    for (const e of await fs.readdir(dir, { withFileTypes: true })) {
+      if (e.isDirectory()) await pruneEmpty(path.join(dir, e.name));
+    }
+    if ((await fs.readdir(dir)).length === 0 && dir !== original) await fs.rmdir(dir);
+  };
+  await pruneEmpty(original);
   const diffR = await run("diff", ["-r", original, path.join(export2, "content")]);
   await fs.writeFile(path.join(OUT, "diff-r.txt"), `diff -r ${original} ${path.join(export2, "content")}\nexit ${diffR.code}\n${diffR.out}`);
   check("diff -r: el contenido del mock es igual al original", diffR.code === 0, diffR.out.slice(0, 300));

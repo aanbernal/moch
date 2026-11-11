@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "order": 120,
+  "kind": "chapter",
+  "title": "La Loma",
+  "dateText": "26 de octubre, 2026",
+  "place": "Parque La Loma",
+  "note": "Fui a ayudarla a grabar el video de su convocatoria en el Parque La Loma.",
+  "draft": true,
+  "cover": "mvimg-20261026-173232.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "mvimg-20261026-173232.jpg",
+      "alt": "Foto en el Parque La Loma"
+    },
+    {
+      "type": "photo",
+      "file": "mvimg-20261026-183502.jpg",
+      "alt": "Foto en el pasto al anochecer"
+    },
+    {
+      "type": "video",
+      "file": "vid-20261026-wa0165.mp4"
+    }
+  ]
+}

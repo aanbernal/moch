@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "order": 20,
+  "kind": "chapter",
+  "title": "Ella invita",
+  "dateText": "29 de septiembre, 2026",
+  "note": "Ella me invitó a salir.",
+  "draft": true,
+  "cover": "whatsapp-convo-her-asking-me-out.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "whatsapp-convo-her-asking-me-out.jpg",
+      "alt": "Captura de la conversación en la que ella me invita a salir"
+    },
+    {
+      "type": "quote",
+      "text": "Para la próxima sería divertido ir solo contigo",
+      "when": "29 de septiembre"
+    },
+    {
+      "type": "photo",
+      "file": "img-20260929-wa0085.jpg",
+      "alt": "Foto del 29 de septiembre"
+    },
+    {
+      "type": "photo",
+      "file": "img-20260929-wa0087.jpg",
+      "alt": "Foto del 29 de septiembre, segunda"
+    },
+    {
+      "type": "quote",
+      "text": "Si hay café yo soy feliz",
+      "when": "29 de septiembre"
+    },
+    {
+      "type": "quote",
+      "text": "Siempre es hora de café",
+      "when": "29 de septiembre"
+    }
+  ]
+}

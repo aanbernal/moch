@@ -46,6 +46,8 @@
   ],
   "Discrepancias de nombres": [
     "IMG-20260925-WA0032.jpg: el plan dice \"0925/IMG-20260925-WA0032\" y en disco es \"new-drive/0925_Ensayo_expo_aws/IMG-20260925-WA0032.jpg\"",
-    "IMG-20260925-WA0041.jpg: el plan dice \"0925/IMG-20260925-WA0041\" y en disco es \"new-drive/0925_Ensayo_expo_aws/IMG-20260925-WA0041.jpg\""
+    "IMG-20260925-WA0041.jpg: el plan dice \"0925/IMG-20260925-WA0041\" y en disco es \"new-drive/0925_Ensayo_expo_aws/IMG-20260925-WA0041.jpg\"",
+    "IMG_20261009_032021.jpg: el plan dice \"1008/IMG-20261009-032021\" y en disco es \"new-drive/1008/IMG_20261009_032021.jpg\"",
+    "IMG_20261025_201839.jpg: el plan dice \"1025/IMG-20261025-201839\" y en disco es \"new-drive/1025/IMG_20261025_201839.jpg\""
   ]
 }

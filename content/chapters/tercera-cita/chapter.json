@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "order": 50,
+  "kind": "chapter",
+  "title": "La tercera cita",
+  "dateText": "Jue 8 de octubre, 2026",
+  "note": "Nuestra tercera cita fue el jueves 8 de octubre.",
+  "draft": true,
+  "cover": "img-20261009-032021.jpg",
+  "media": [
+    {
+      "type": "photo",
+      "file": "img-20261009-032021.jpg",
+      "alt": "Foto de la tercera cita"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261008-wa0060.jpg",
+      "alt": "Foto de la tercera cita, segunda"
+    },
+    {
+      "type": "photo",
+      "file": "img-20261008-222901.jpg",
+      "alt": "Foto de la tercera cita, tercera"
+    }
+  ]
+}
